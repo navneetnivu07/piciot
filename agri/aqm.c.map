@@ -26,29 +26,29 @@ Machine type is 16F877A
 startup.obj     end_init                             12       12        3        8       0
                 reset_vec                             0        0        3        0       0
 aqm.c.obj       intentry                              4        4        E        8       0
-                text531                             5CE      5CE       2A      1C6       0
-                text530                             670      670       15      1C6       0
-                text529                             560      560       3F      1C6       0
-                text528                             696      696        C      1C6       0
-                text527                             4C8      4C8       52      1C6       0
-                text526                             51A      51A       46      1C6       0
-                text525                             63A      63A       1D      1C6       0
-                text524                             5F8      5F8       25      1C6       0
-                text523                             61D      61D       1D      1C6       0
-                text522                             3CC      3CC       86      1C6       0
-                text521                             657      657       19      1C6       0
-                text520                             59F      59F       2F      1C6       0
-                text519                             32F      32F       9D      1C6       0
-                text518                             24A      24A       E5      1C6       0
-                text517                              E3       E3      167      1C6       0
-                maintext                            452      452       76      1C6       0
+                text537                             55E      55E       2A      1F2       0
+                text536                             600      600       15      1F2       0
+                text535                             4F0      4F0       3F      1F2       0
+                text534                             626      626        C      1F2       0
+                text533                             458      458       52      1F2       0
+                text532                             4AA      4AA       46      1F2       0
+                text531                             5CA      5CA       1D      1F2       0
+                text530                             588      588       25      1F2       0
+                text529                             5AD      5AD       1D      1F2       0
+                text528                             35C      35C       86      1F2       0
+                text527                             5E7      5E7       19      1F2       0
+                text526                             52F      52F       2F      1F2       0
+                text525                             2BF      2BF       9D      1F2       0
+                text524                              F9       F9       E5      1F2       0
+                text523                             1DE      1DE       E1      1F2       0
+                maintext                            3E2      3E2       76      1F2       0
                 cstackBANK0                          3A       3A        F       20       1
                 cstackCOMMON                         70       70        5       70       1
-                clrtext                             6A2      6A2        8      1C6       0
+                clrtext                             632      632        8      1F2       0
                 bssBANK0                             20       20       1A       20       1
                 bssCOMMON                            75       75        4       70       1
-                cinit                               685      685       11      1C6       0
-                strings                              15       15       CE       2A       0
+                cinit                               615      615       11      1F2       0
+                strings                              15       15       E4       2A       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
@@ -57,31 +57,31 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             12       12        3         0
                 intentry                              4        4        E         0
                 reset_vec                             0        0        3         0
-                text531                             5CE      5CE       2A         0
-                text530                             670      670       15         0
-                text529                             560      560       3F         0
-                text528                             696      696        C         0
-                text527                             4C8      4C8       52         0
-                text526                             51A      51A       46         0
-                text525                             63A      63A       1D         0
-                text524                             5F8      5F8       25         0
-                text523                             61D      61D       1D         0
-                text522                             3CC      3CC       86         0
-                text521                             657      657       19         0
-                text520                             59F      59F       2F         0
-                text519                             32F      32F       9D         0
-                text518                             24A      24A       E5         0
-                text517                              E3       E3      167         0
-                maintext                            452      452       76         0
-                clrtext                             6A2      6A2        8         0
-                cinit                               685      685       11         0
+                text537                             55E      55E       2A         0
+                text536                             600      600       15         0
+                text535                             4F0      4F0       3F         0
+                text534                             626      626        C         0
+                text533                             458      458       52         0
+                text532                             4AA      4AA       46         0
+                text531                             5CA      5CA       1D         0
+                text530                             588      588       25         0
+                text529                             5AD      5AD       1D         0
+                text528                             35C      35C       86         0
+                text527                             5E7      5E7       19         0
+                text526                             52F      52F       2F         0
+                text525                             2BF      2BF       9D         0
+                text524                              F9       F9       E5         0
+                text523                             1DE      1DE       E1         0
+                maintext                            3E2      3E2       76         0
+                clrtext                             632      632        8         0
+                cinit                               615      615       11         0
 
         CLASS   STRCODE        
 
         CLASS   ENTRY          
 
         CLASS   STRING         
-                strings                              15       15       CE         0
+                strings                              15       15       E4         0
 
         CLASS   BANK0          
                 cstackBANK0                          3A       3A        F         1
@@ -123,9 +123,9 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
                 intentry                       000004  000011  000015         8       0  CODE        2
                 bssBANK0                       000020  000029  000049        20       1  BANK0       1
-                strings                        000015  0000CE  0000E3        2A       0  STRING      2
+                strings                        000015  0000E4  0000F9        2A       0  STRING      2
                 cstackCOMMON                   000070  000009  000079        70       1  COMMON      1
-                text517                        0000E3  0005C7  0006AA       1C6       0  CODE        2
+                text524                        0000F9  000541  00063A       1F2       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -136,14 +136,14 @@ UNUSED ADDRESS RANGES
         BANK2            110-16F            60           1
         BANK3            190-1EF            60           1
         CODE             003-003             1           2
-                         6AA-1FFF           800
+                         63A-1FFF           800
         COMMON           079-07D             5           1
         CONFIG           2007-2007             1           2
         CONST            003-003             1           2
-                         6AA-1FFF           100
+                         63A-1FFF           100
         EEDATA           2100-21FF           100           2
         ENTRY            003-003             1           2
-                         6AA-1FFF           100
+                         63A-1FFF           100
         IDLOC            2000-2003             4           2
         RAM              049-06F            27           1
                          0A0-0EF            50
@@ -154,9 +154,9 @@ UNUSED ADDRESS RANGES
         SFR2             100-10F            10           1
         SFR3             180-18F            10           1
         STRCODE          003-003             1           2
-                         6AA-1FFF          1956
+                         63A-1FFF          19C6
         STRING           003-003             1           2
-                         6AA-1FFF           100
+                         63A-1FFF           100
 
                                   Symbol Table
 
@@ -208,6 +208,8 @@ _PORTD                   (abs)        008
 _PORTE                   (abs)        009
 _RA2                     (abs)        02A
 _RA5                     (abs)        02D
+_RC0                     (abs)        038
+_RC1                     (abs)        039
 _RCIE                    (abs)        465
 _RCIF                    (abs)        065
 _RCREG                   (abs)        01A
@@ -283,58 +285,58 @@ __Lsfr2                  sfr2         000
 __Lsfr3                  sfr3         000
 __Lstrings               strings      000
 __Ltext                  text         000
-__S0                     (abs)        6AA
+__S0                     (abs)        63A
 __S1                     (abs)        079
 __S2                     (abs)        000
-___lwdiv                 text527      4C8
+___lwdiv                 text533      458
 ___lwdiv@counter         cstackBANK0  03F
 ___lwdiv@dividend        cstackBANK0  03C
 ___lwdiv@divisor         cstackBANK0  03A
 ___lwdiv@quotient        cstackBANK0  040
-___lwmod                 text526      51A
+___lwmod                 text532      4AA
 ___lwmod@counter         cstackBANK0  03F
 ___lwmod@dividend        cstackBANK0  03C
 ___lwmod@divisor         cstackBANK0  03A
-__end_of___lwdiv         text527      51A
-__end_of___lwmod         text526      560
-__end_of_adc_conversion  text529      59F
-__end_of_command         text525      657
-__end_of_funct           text531      5F8
-__end_of_gprs            text517      24A
-__end_of_gprs1           text518      32F
-__end_of_gsm_init        text522      452
-__end_of_hexa_val        text519      3CC
-__end_of_lcd_data        text523      63A
-__end_of_lcd_display     text520      5CE
-__end_of_lcd_init        text521      670
-__end_of_main            maintext     4C8
-__end_of_serial_display  text524      61D
-__end_of_serial_init     text530      685
-__end_of_serial_out      text528      6A2
+__end_of___lwdiv         text533      4AA
+__end_of___lwmod         text532      4F0
+__end_of_adc_conversion  text535      52F
+__end_of_command         text531      5E7
+__end_of_funct           text537      588
+__end_of_gprs            text523      2BF
+__end_of_gprs1           text524      1DE
+__end_of_gsm_init        text528      3E2
+__end_of_hexa_val        text525      35C
+__end_of_lcd_data        text529      5CA
+__end_of_lcd_display     text526      55E
+__end_of_lcd_init        text527      600
+__end_of_main            maintext     458
+__end_of_serial_display  text530      5AD
+__end_of_serial_init     text536      615
+__end_of_serial_out      text534      632
 __pbssBANK0              bssBANK0     020
 __pbssCOMMON             bssCOMMON    075
 __pcstackBANK0           cstackBANK0  03A
 __pcstackCOMMON          cstackCOMMON 070
 __pintentry              intentry     004
-__pmaintext              maintext     452
+__pmaintext              maintext     3E2
 __pstrings               strings      015
-__ptext516               text516      000
-__ptext517               text517      0E3
-__ptext518               text518      24A
-__ptext519               text519      32F
-__ptext520               text520      59F
-__ptext521               text521      657
-__ptext522               text522      3CC
-__ptext523               text523      61D
-__ptext524               text524      5F8
-__ptext525               text525      63A
-__ptext526               text526      51A
-__ptext527               text527      4C8
-__ptext528               text528      696
-__ptext529               text529      560
-__ptext530               text530      670
-__ptext531               text531      5CE
-__ptext532               text532      000
+__ptext522               text522      000
+__ptext523               text523      1DE
+__ptext524               text524      0F9
+__ptext525               text525      2BF
+__ptext526               text526      52F
+__ptext527               text527      5E7
+__ptext528               text528      35C
+__ptext529               text529      5AD
+__ptext530               text530      588
+__ptext531               text531      5CA
+__ptext532               text532      4AA
+__ptext533               text533      458
+__ptext534               text534      626
+__ptext535               text535      4F0
+__ptext536               text536      600
+__ptext537               text537      55E
+__ptext538               text538      000
 __size_of___lwdiv        (abs)        000
 __size_of___lwmod        (abs)        000
 __size_of_adc_conversion (abs)        000
@@ -352,37 +354,37 @@ __size_of_serial_display (abs)        000
 __size_of_serial_init    (abs)        000
 __size_of_serial_out     (abs)        000
 _a                       bssBANK0     02A
-_adc_conversion          text529      560
+_adc_conversion          text535      4F0
 _b                       bssCOMMON    075
 _c                       bssBANK0     02C
-_command                 text525      63A
+_command                 text531      5CA
 _d                       bssBANK0     02E
 _exit                    init         012
-_funct                   text531      5CE
-_gprs                    text517      0E3
-_gprs1                   text518      24A
-_gsm_init                text522      3CC
-_hexa_val                text519      32F
+_funct                   text537      55E
+_gprs                    text523      1DE
+_gprs1                   text524      0F9
+_gsm_init                text528      35C
+_hexa_val                text525      2BF
 _j                       bssBANK0     030
 _k                       bssBANK0     032
 _l                       bssBANK0     034
-_lcd_data                text523      61D
-_lcd_display             text520      59F
-_lcd_init                text521      657
+_lcd_data                text529      5AD
+_lcd_display             text526      52F
+_lcd_init                text527      5E7
 _m                       bssBANK0     036
-_main                    maintext     452
+_main                    maintext     3E2
 _n                       bssBANK0     038
 _p                       bssCOMMON    077
 _r                       bssBANK0     020
 _s                       bssBANK0     025
-_serial_display          text524      5F8
-_serial_init             text530      670
-_serial_out              text528      696
+_serial_display          text530      588
+_serial_init             text536      600
+_serial_out              text534      626
 _y                       bssCOMMON    078
 btemp                    (abs)        07E
-clear_ram                clrtext      6A2
+clear_ram                clrtext      632
 command@com              cstackBANK0  03C
-end_of_initialization    cinit        692
+end_of_initialization    cinit        622
 hexa_val@val             cstackBANK0  042
 interrupt_function       intentry     004
 intlevel0                functab      000
@@ -398,5 +400,5 @@ saved_w                  (abs)        07E
 serial_display@w         cstackBANK0  03C
 serial_out@z             cstackBANK0  03A
 start                    init         012
-start_initialization     cinit        685
+start_initialization     cinit        615
 wtemp0                   (abs)        07E

@@ -420,7 +420,7 @@ serial_init();
 gsm_init();
 lcd_init();
 command(0x80);
-lcd_display("VAL :");
+lcd_display("VOLT:");
 command(0x87);
 
 while(1){
@@ -472,24 +472,24 @@ serial_out('"');
 serial_out(',');
 serial_out('"');
 
-serial_display("livemonitoring.co.in/aqm1/insert.php?");
-if(j >= 10 && j <= 20){
-serial_display("o2=");
-} else if(j >= 21 && j <= 30){
-serial_display("co2=");
-} else if(j >= 31 && j <= 40){
-serial_display("co=");
-} else if(j >= 41 && j <= 50){
-serial_display("oh=");
-} else if(j >= 51 && j <= 60){
-serial_display("meth=");
-} else if(j >= 61 && j <= 150){
-serial_display("butane=");
-}
-serial_out(d+0x30);
-serial_out(k+0x30);
+serial_display("livemonitoring.co.in/agri01/insert.php?temp=");
 serial_out(m+0x30);
 serial_out(n+0x30);
+serial_display("&moist=");
+
+if(RC0==0){
+serial_display("FULL");
+}else{
+serial_display("DRY ");
+}
+
+serial_display("&anim=");
+
+if(RC1==1){
+serial_display("AnimalDetect");
+}else{
+serial_display("NoAnimalDetect");
+}
 
 serial_out('"');
 serial_out(0x0d);
@@ -515,7 +515,7 @@ serial_display("URL");
 serial_out('"');
 serial_out(',');
 serial_out('"');
-serial_display("livemonitoring.co.in/aqm1/mout.php");
+serial_display("livemonitoring.co.in/agri01/mout.php");
 serial_out('"');
 serial_out(0x0d);
 serial_display("AT+HTTPPARA=");

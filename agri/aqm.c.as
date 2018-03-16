@@ -80,9 +80,9 @@ pclath	equ	10
 	global	_p
 	global	_y
 	global	_ADCON0
-psect	text516,local,class=CODE,delta=2
-global __ptext516
-__ptext516:
+psect	text522,local,class=CODE,delta=2
+global __ptext522
+__ptext522:
 _ADCON0	set	31
 	global	_ADRESH
 _ADRESH	set	30
@@ -112,6 +112,10 @@ _PEIE	set	94
 _RA2	set	42
 	global	_RA5
 _RA5	set	45
+	global	_RC0
+_RC0	set	56
+	global	_RC1
+_RC1	set	57
 	global	_RCIF
 _RCIF	set	101
 	global	_RE0
@@ -183,8 +187,10 @@ STR_9:
 	retlw	110	;'n'
 	retlw	47	;'/'
 	retlw	97	;'a'
-	retlw	113	;'q'
-	retlw	109	;'m'
+	retlw	103	;'g'
+	retlw	114	;'r'
+	retlw	105	;'i'
+	retlw	48	;'0'
 	retlw	49	;'1'
 	retlw	47	;'/'
 	retlw	105	;'i'
@@ -198,6 +204,11 @@ STR_9:
 	retlw	104	;'h'
 	retlw	112	;'p'
 	retlw	63	;'?'
+	retlw	116	;'t'
+	retlw	101	;'e'
+	retlw	109	;'m'
+	retlw	112	;'p'
+	retlw	61	;'='
 	retlw	0
 psect	strings
 	
@@ -224,8 +235,10 @@ STR_21:
 	retlw	110	;'n'
 	retlw	47	;'/'
 	retlw	97	;'a'
-	retlw	113	;'q'
-	retlw	109	;'m'
+	retlw	103	;'g'
+	retlw	114	;'r'
+	retlw	105	;'i'
+	retlw	48	;'0'
 	retlw	49	;'1'
 	retlw	47	;'/'
 	retlw	109	;'m'
@@ -255,6 +268,24 @@ STR_18:
 	retlw	78	;'N'
 	retlw	61	;'='
 	retlw	48	;'0'
+	retlw	0
+psect	strings
+	
+STR_15:	
+	retlw	78	;'N'
+	retlw	111	;'o'
+	retlw	65	;'A'
+	retlw	110	;'n'
+	retlw	105	;'i'
+	retlw	109	;'m'
+	retlw	97	;'a'
+	retlw	108	;'l'
+	retlw	68	;'D'
+	retlw	101	;'e'
+	retlw	116	;'t'
+	retlw	101	;'e'
+	retlw	99	;'c'
+	retlw	116	;'t'
 	retlw	0
 psect	strings
 	
@@ -332,40 +363,49 @@ STR_4:
 	retlw	0
 psect	strings
 	
-STR_15:	
-	retlw	98	;'b'
-	retlw	117	;'u'
+STR_10:	
+	retlw	38	;'&'
+	retlw	109	;'m'
+	retlw	111	;'o'
+	retlw	105	;'i'
+	retlw	115	;'s'
 	retlw	116	;'t'
+	retlw	61	;'='
+	retlw	0
+psect	strings
+	
+STR_13:	
+	retlw	38	;'&'
 	retlw	97	;'a'
 	retlw	110	;'n'
-	retlw	101	;'e'
+	retlw	105	;'i'
+	retlw	109	;'m'
 	retlw	61	;'='
 	retlw	0
 psect	strings
 	
 STR_1:	
 	retlw	86	;'V'
-	retlw	65	;'A'
+	retlw	79	;'O'
 	retlw	76	;'L'
-	retlw	32	;' '
+	retlw	84	;'T'
 	retlw	58	;':'
 	retlw	0
 psect	strings
 	
-STR_14:	
-	retlw	109	;'m'
-	retlw	101	;'e'
-	retlw	116	;'t'
-	retlw	104	;'h'
-	retlw	61	;'='
+STR_12:	
+	retlw	68	;'D'
+	retlw	82	;'R'
+	retlw	89	;'Y'
+	retlw	32	;' '
 	retlw	0
 psect	strings
 	
 STR_11:	
-	retlw	99	;'c'
-	retlw	111	;'o'
-	retlw	50	;'2'
-	retlw	61	;'='
+	retlw	70	;'F'
+	retlw	85	;'U'
+	retlw	76	;'L'
+	retlw	76	;'L'
 	retlw	0
 psect	strings
 	
@@ -373,20 +413,6 @@ STR_26:
 	retlw	79	;'O'
 	retlw	78	;'N'
 	retlw	32	;' '
-	retlw	0
-psect	strings
-	
-STR_13:	
-	retlw	111	;'o'
-	retlw	104	;'h'
-	retlw	61	;'='
-	retlw	0
-psect	strings
-	
-STR_12:	
-	retlw	99	;'c'
-	retlw	111	;'o'
-	retlw	61	;'='
 	retlw	0
 psect	strings
 	
@@ -416,13 +442,13 @@ STR_2:
 	retlw	84	;'T'
 	retlw	0
 psect	strings
+STR_14	equ	STR_15+2
 STR_3	equ	STR_2+0
 STR_20	equ	STR_8+0
 STR_23	equ	STR_17+0
 STR_16	equ	STR_7+0
 STR_19	equ	STR_7+0
 STR_22	equ	STR_7+0
-STR_10	equ	STR_11+1
 STR_24	equ	STR_18+0
 	file	"aqm.c.as"
 	line	#
@@ -618,7 +644,7 @@ hexa_val@val:	; 2 bytes @ 0x8
 	global	??_main
 ??_main:	; 0 bytes @ 0xC
 	ds	3
-;;Data sizes: Strings 200, constant 0, data 0, bss 30, persistent 0 stack 0
+;;Data sizes: Strings 222, constant 0, data 0, bss 30, persistent 0 stack 0
 ;;Auto spaces:   Size  Autos    Used
 ;; COMMON          14      5       9
 ;; BANK0           80     15      41
@@ -636,12 +662,12 @@ hexa_val@val:	; 2 bytes @ 0x8
 ;; lcd_display@word	PTR const unsigned char  size(1) Largest target is 6
 ;;		 -> STR_27(CODE[4]), STR_26(CODE[4]), STR_1(CODE[6]), 
 ;;
-;; serial_display@w	PTR const unsigned char  size(1) Largest target is 38
+;; serial_display@w	PTR const unsigned char  size(1) Largest target is 45
 ;;		 -> STR_25(CODE[12]), STR_24(CODE[16]), STR_23(CODE[4]), STR_22(CODE[13]), 
-;;		 -> STR_21(CODE[35]), STR_20(CODE[4]), STR_19(CODE[13]), STR_18(CODE[16]), 
-;;		 -> STR_17(CODE[4]), STR_16(CODE[13]), STR_15(CODE[8]), STR_14(CODE[6]), 
-;;		 -> STR_13(CODE[4]), STR_12(CODE[4]), STR_11(CODE[5]), STR_10(CODE[4]), 
-;;		 -> STR_9(CODE[38]), STR_8(CODE[4]), STR_7(CODE[13]), STR_6(CODE[12]), 
+;;		 -> STR_21(CODE[37]), STR_20(CODE[4]), STR_19(CODE[13]), STR_18(CODE[16]), 
+;;		 -> STR_17(CODE[4]), STR_16(CODE[13]), STR_15(CODE[15]), STR_14(CODE[13]), 
+;;		 -> STR_13(CODE[7]), STR_12(CODE[5]), STR_11(CODE[5]), STR_10(CODE[8]), 
+;;		 -> STR_9(CODE[45]), STR_8(CODE[4]), STR_7(CODE[13]), STR_6(CODE[12]), 
 ;;		 -> STR_5(CODE[13]), STR_4(CODE[9]), STR_3(CODE[3]), STR_2(CODE[3]), 
 ;;
 
@@ -892,7 +918,7 @@ _main:
 ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	29
 	
-l2815:	
+l2730:	
 ;aqm.c: 29: ADCON1=0X8E;
 	movlw	(08Eh)
 	bsf	status, 5	;RP0=1, select bank1
@@ -900,12 +926,12 @@ l2815:
 	movwf	(159)^080h	;volatile
 	line	30
 	
-l2817:	
+l2732:	
 ;aqm.c: 30: TRISB=0x00;
 	clrf	(134)^080h	;volatile
 	line	31
 	
-l2819:	
+l2734:	
 ;aqm.c: 31: PORTB=0x00;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -918,28 +944,28 @@ l2819:
 	movwf	(133)^080h	;volatile
 	line	33
 	
-l2821:	
+l2736:	
 ;aqm.c: 33: PORTA=0x00;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(5)	;volatile
 	line	34
 	
-l2823:	
+l2738:	
 ;aqm.c: 34: TRISD=0x00;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	clrf	(136)^080h	;volatile
 	line	35
 	
-l2825:	
+l2740:	
 ;aqm.c: 35: PORTD=0x00;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(8)	;volatile
 	line	36
 	
-l2827:	
+l2742:	
 ;aqm.c: 36: TRISC=0x83;
 	movlw	(083h)
 	bsf	status, 5	;RP0=1, select bank1
@@ -960,63 +986,63 @@ l2827:
 	clrf	(137)^080h	;volatile
 	line	40
 	
-l2829:	
+l2744:	
 ;aqm.c: 40: RA5=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(45/8),(45)&7
 	line	41
 	
-l2831:	
+l2746:	
 ;aqm.c: 41: serial_init();
 	fcall	_serial_init
 	line	42
 	
-l2833:	
+l2748:	
 ;aqm.c: 42: gsm_init();
 	fcall	_gsm_init
 	line	43
 	
-l2835:	
+l2750:	
 ;aqm.c: 43: lcd_init();
 	fcall	_lcd_init
 	line	44
 	
-l2837:	
+l2752:	
 ;aqm.c: 44: command(0x80);
 	movlw	(080h)
 	fcall	_command
 	line	45
 	
-l2839:	
-;aqm.c: 45: lcd_display("VAL :");
+l2754:	
+;aqm.c: 45: lcd_display("VOLT:");
 	movlw	((STR_1-__stringbase))&0ffh
 	fcall	_lcd_display
 	line	46
 	
-l2841:	
+l2756:	
 ;aqm.c: 46: command(0x87);
 	movlw	(087h)
 	fcall	_command
-	goto	l2843
+	goto	l2758
 	line	48
 ;aqm.c: 48: while(1){
 	
 l611:	
 	line	49
 	
-l2843:	
+l2758:	
 ;aqm.c: 49: adc_conversion();
 	fcall	_adc_conversion
 	line	50
 	
-l2845:	
+l2760:	
 ;aqm.c: 50: command(0x85);
 	movlw	(085h)
 	fcall	_command
 	line	51
 	
-l2847:	
+l2762:	
 ;aqm.c: 51: hexa_val(c);
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -1030,7 +1056,7 @@ l2847:
 	fcall	_hexa_val
 	line	52
 	
-l2849:	
+l2764:	
 ;aqm.c: 52: _delay((unsigned long)((500)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  13
@@ -1041,27 +1067,27 @@ movlw	163
 movwf	((??_main+0)+0+1),f
 	movlw	189
 movwf	((??_main+0)+0),f
-u3077:
+u2777:
 	decfsz	((??_main+0)+0),f
-	goto	u3077
+	goto	u2777
 	decfsz	((??_main+0)+0+1),f
-	goto	u3077
+	goto	u2777
 	decfsz	((??_main+0)+0+2),f
-	goto	u3077
+	goto	u2777
 	clrwdt
 opt asmopt_on
 
 	line	53
 	
-l2851:	
+l2766:	
 ;aqm.c: 53: gprs();
 	fcall	_gprs
-	goto	l2843
+	goto	l2758
 	line	54
 	
 l612:	
 	line	48
-	goto	l2843
+	goto	l2758
 	
 l613:	
 	line	55
@@ -1076,9 +1102,9 @@ GLOBAL	__end_of_main
 
 	signat	_main,88
 	global	_gprs
-psect	text517,local,class=CODE,delta=2
-global __ptext517
-__ptext517:
+psect	text523,local,class=CODE,delta=2
+global __ptext523
+__ptext523:
 
 ;; *************** function _gprs *****************
 ;; Defined at:
@@ -1111,7 +1137,7 @@ __ptext517:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text517
+psect	text523
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	89
 	global	__size_of_gprs
@@ -1122,19 +1148,19 @@ _gprs:
 ; Regs used in _gprs: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	90
 	
-l2735:	
+l2676:	
 ;aqm.c: 90: serial_display("AT+HTTPPARA=");
 	movlw	((STR_7-__stringbase))&0ffh
 	fcall	_serial_display
 	line	91
 	
-l2737:	
+l2678:	
 ;aqm.c: 91: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	92
 	
-l2739:	
+l2680:	
 ;aqm.c: 92: serial_display("URL");
 	movlw	((STR_8-__stringbase))&0ffh
 	fcall	_serial_display
@@ -1152,312 +1178,120 @@ l2739:
 	fcall	_serial_out
 	line	97
 	
-l2741:	
-;aqm.c: 97: serial_display("livemonitoring.co.in/aqm1/insert.php?");
+l2682:	
+;aqm.c: 97: serial_display("livemonitoring.co.in/agri01/insert.php?temp=");
 	movlw	((STR_9-__stringbase))&0ffh
 	fcall	_serial_display
 	line	98
 	
-l2743:	
-;aqm.c: 98: if(j >= 10 && j <= 20){
-	movlw	high(0Ah)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	subwf	(_j+1),w
-	movlw	low(0Ah)
-	skipnz
-	subwf	(_j),w
-	skipc
-	goto	u2951
-	goto	u2950
-u2951:
-	goto	l2749
-u2950:
-	
-l2745:	
-	movlw	high(015h)
-	subwf	(_j+1),w
-	movlw	low(015h)
-	skipnz
-	subwf	(_j),w
-	skipnc
-	goto	u2961
-	goto	u2960
-u2961:
-	goto	l2749
-u2960:
-	line	99
-	
-l2747:	
-;aqm.c: 99: serial_display("o2=");
-	movlw	((STR_10-__stringbase))&0ffh
-	fcall	_serial_display
-	line	100
-;aqm.c: 100: } else if(j >= 21 && j <= 30){
-	goto	l2779
-	
-l623:	
-	
-l2749:	
-	movlw	high(015h)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	subwf	(_j+1),w
-	movlw	low(015h)
-	skipnz
-	subwf	(_j),w
-	skipc
-	goto	u2971
-	goto	u2970
-u2971:
-	goto	l2755
-u2970:
-	
-l2751:	
-	movlw	high(01Fh)
-	subwf	(_j+1),w
-	movlw	low(01Fh)
-	skipnz
-	subwf	(_j),w
-	skipnc
-	goto	u2981
-	goto	u2980
-u2981:
-	goto	l2755
-u2980:
-	line	101
-	
-l2753:	
-;aqm.c: 101: serial_display("co2=");
-	movlw	((STR_11-__stringbase))&0ffh
-	fcall	_serial_display
-	line	102
-;aqm.c: 102: } else if(j >= 31 && j <= 40){
-	goto	l2779
-	
-l625:	
-	
-l2755:	
-	movlw	high(01Fh)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	subwf	(_j+1),w
-	movlw	low(01Fh)
-	skipnz
-	subwf	(_j),w
-	skipc
-	goto	u2991
-	goto	u2990
-u2991:
-	goto	l2761
-u2990:
-	
-l2757:	
-	movlw	high(029h)
-	subwf	(_j+1),w
-	movlw	low(029h)
-	skipnz
-	subwf	(_j),w
-	skipnc
-	goto	u3001
-	goto	u3000
-u3001:
-	goto	l2761
-u3000:
-	line	103
-	
-l2759:	
-;aqm.c: 103: serial_display("co=");
-	movlw	((STR_12-__stringbase))&0ffh
-	fcall	_serial_display
-	line	104
-;aqm.c: 104: } else if(j >= 41 && j <= 50){
-	goto	l2779
-	
-l627:	
-	
-l2761:	
-	movlw	high(029h)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	subwf	(_j+1),w
-	movlw	low(029h)
-	skipnz
-	subwf	(_j),w
-	skipc
-	goto	u3011
-	goto	u3010
-u3011:
-	goto	l2767
-u3010:
-	
-l2763:	
-	movlw	high(033h)
-	subwf	(_j+1),w
-	movlw	low(033h)
-	skipnz
-	subwf	(_j),w
-	skipnc
-	goto	u3021
-	goto	u3020
-u3021:
-	goto	l2767
-u3020:
-	line	105
-	
-l2765:	
-;aqm.c: 105: serial_display("oh=");
-	movlw	((STR_13-__stringbase))&0ffh
-	fcall	_serial_display
-	line	106
-;aqm.c: 106: } else if(j >= 51 && j <= 60){
-	goto	l2779
-	
-l629:	
-	
-l2767:	
-	movlw	high(033h)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	subwf	(_j+1),w
-	movlw	low(033h)
-	skipnz
-	subwf	(_j),w
-	skipc
-	goto	u3031
-	goto	u3030
-u3031:
-	goto	l2773
-u3030:
-	
-l2769:	
-	movlw	high(03Dh)
-	subwf	(_j+1),w
-	movlw	low(03Dh)
-	skipnz
-	subwf	(_j),w
-	skipnc
-	goto	u3041
-	goto	u3040
-u3041:
-	goto	l2773
-u3040:
-	line	107
-	
-l2771:	
-;aqm.c: 107: serial_display("meth=");
-	movlw	((STR_14-__stringbase))&0ffh
-	fcall	_serial_display
-	line	108
-;aqm.c: 108: } else if(j >= 61 && j <= 150){
-	goto	l2779
-	
-l631:	
-	
-l2773:	
-	movlw	high(03Dh)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	subwf	(_j+1),w
-	movlw	low(03Dh)
-	skipnz
-	subwf	(_j),w
-	skipc
-	goto	u3051
-	goto	u3050
-u3051:
-	goto	l2779
-u3050:
-	
-l2775:	
-	movlw	high(097h)
-	subwf	(_j+1),w
-	movlw	low(097h)
-	skipnz
-	subwf	(_j),w
-	skipnc
-	goto	u3061
-	goto	u3060
-u3061:
-	goto	l2779
-u3060:
-	line	109
-	
-l2777:	
-;aqm.c: 109: serial_display("butane=");
-	movlw	((STR_15-__stringbase))&0ffh
-	fcall	_serial_display
-	goto	l2779
-	line	110
-	
-l633:	
-	goto	l2779
-	line	111
-	
-l632:	
-	goto	l2779
-	
-l630:	
-	goto	l2779
-	
-l628:	
-	goto	l2779
-	
-l626:	
-	goto	l2779
-	
-l624:	
-	
-l2779:	
-;aqm.c: 110: }
-;aqm.c: 111: serial_out(d+0x30);
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	movf	(_d),w
-	addlw	030h
-	fcall	_serial_out
-	line	112
-	
-l2781:	
-;aqm.c: 112: serial_out(k+0x30);
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	movf	(_k),w
-	addlw	030h
-	fcall	_serial_out
-	line	113
-	
-l2783:	
-;aqm.c: 113: serial_out(m+0x30);
+l2684:	
+;aqm.c: 98: serial_out(m+0x30);
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(_m),w
 	addlw	030h
 	fcall	_serial_out
-	line	114
+	line	99
 	
-l2785:	
-;aqm.c: 114: serial_out(n+0x30);
+l2686:	
+;aqm.c: 99: serial_out(n+0x30);
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(_n),w
 	addlw	030h
 	fcall	_serial_out
+	line	100
+	
+l2688:	
+;aqm.c: 100: serial_display("&moist=");
+	movlw	((STR_10-__stringbase))&0ffh
+	fcall	_serial_display
+	line	102
+	
+l2690:	
+;aqm.c: 102: if(RC0==0){
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	btfsc	(56/8),(56)&7
+	goto	u2751
+	goto	u2750
+u2751:
+	goto	l2694
+u2750:
+	line	103
+	
+l2692:	
+;aqm.c: 103: serial_display("FULL");
+	movlw	((STR_11-__stringbase))&0ffh
+	fcall	_serial_display
+	line	104
+;aqm.c: 104: }else{
+	goto	l624
+	
+l623:	
+	line	105
+	
+l2694:	
+;aqm.c: 105: serial_display("DRY ");
+	movlw	((STR_12-__stringbase))&0ffh
+	fcall	_serial_display
+	line	106
+	
+l624:	
+	line	108
+;aqm.c: 106: }
+;aqm.c: 108: serial_display("&anim=");
+	movlw	((STR_13-__stringbase))&0ffh
+	fcall	_serial_display
+	line	110
+	
+l2696:	
+;aqm.c: 110: if(RC1==1){
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	btfss	(57/8),(57)&7
+	goto	u2761
+	goto	u2760
+u2761:
+	goto	l2700
+u2760:
+	line	111
+	
+l2698:	
+;aqm.c: 111: serial_display("AnimalDetect");
+	movlw	((STR_14-__stringbase))&0ffh
+	fcall	_serial_display
+	line	112
+;aqm.c: 112: }else{
+	goto	l2702
+	
+l625:	
+	line	113
+	
+l2700:	
+;aqm.c: 113: serial_display("NoAnimalDetect");
+	movlw	((STR_15-__stringbase))&0ffh
+	fcall	_serial_display
+	goto	l2702
+	line	114
+	
+l626:	
 	line	116
 	
-l2787:	
+l2702:	
+;aqm.c: 114: }
 ;aqm.c: 116: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	117
 	
-l2789:	
+l2704:	
 ;aqm.c: 117: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
 	line	118
 	
-l2791:	
+l2706:	
 ;aqm.c: 118: _delay((unsigned long)((2000)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  51
@@ -1468,60 +1302,60 @@ movlw	137
 movwf	((??_gprs+0)+0+1),f
 	movlw	256
 movwf	((??_gprs+0)+0),f
-u3087:
+u2787:
 	decfsz	((??_gprs+0)+0),f
-	goto	u3087
+	goto	u2787
 	decfsz	((??_gprs+0)+0+1),f
-	goto	u3087
+	goto	u2787
 	decfsz	((??_gprs+0)+0+2),f
-	goto	u3087
+	goto	u2787
 opt asmopt_on
 
 	line	119
 	
-l2793:	
+l2708:	
 ;aqm.c: 119: serial_display("AT+HTTPPARA=");
 	movlw	((STR_16-__stringbase))&0ffh
 	fcall	_serial_display
 	line	120
 	
-l2795:	
+l2710:	
 ;aqm.c: 120: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	121
 	
-l2797:	
+l2712:	
 ;aqm.c: 121: serial_display("CID");
 	movlw	((STR_17-__stringbase))&0ffh
 	fcall	_serial_display
 	line	122
 	
-l2799:	
+l2714:	
 ;aqm.c: 122: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	123
 	
-l2801:	
+l2716:	
 ;aqm.c: 123: serial_out(',');
 	movlw	(02Ch)
 	fcall	_serial_out
 	line	124
 	
-l2803:	
+l2718:	
 ;aqm.c: 124: serial_out('1');
 	movlw	(031h)
 	fcall	_serial_out
 	line	125
 	
-l2805:	
+l2720:	
 ;aqm.c: 125: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
 	line	126
 	
-l2807:	
+l2722:	
 ;aqm.c: 126: _delay((unsigned long)((2000)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  51
@@ -1532,18 +1366,18 @@ movlw	137
 movwf	((??_gprs+0)+0+1),f
 	movlw	256
 movwf	((??_gprs+0)+0),f
-u3097:
+u2797:
 	decfsz	((??_gprs+0)+0),f
-	goto	u3097
+	goto	u2797
 	decfsz	((??_gprs+0)+0+1),f
-	goto	u3097
+	goto	u2797
 	decfsz	((??_gprs+0)+0+2),f
-	goto	u3097
+	goto	u2797
 opt asmopt_on
 
 	line	127
 	
-l2809:	
+l2724:	
 ;aqm.c: 127: serial_display("AT+HTTPACTION=0");
 	movlw	((STR_18-__stringbase))&0ffh
 	fcall	_serial_display
@@ -1553,7 +1387,7 @@ l2809:
 	fcall	_serial_out
 	line	129
 	
-l2811:	
+l2726:	
 ;aqm.c: 129: _delay((unsigned long)((2000)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  51
@@ -1564,23 +1398,23 @@ movlw	137
 movwf	((??_gprs+0)+0+1),f
 	movlw	256
 movwf	((??_gprs+0)+0),f
-u3107:
+u2807:
 	decfsz	((??_gprs+0)+0),f
-	goto	u3107
+	goto	u2807
 	decfsz	((??_gprs+0)+0+1),f
-	goto	u3107
+	goto	u2807
 	decfsz	((??_gprs+0)+0+2),f
-	goto	u3107
+	goto	u2807
 opt asmopt_on
 
 	line	130
 	
-l2813:	
+l2728:	
 ;aqm.c: 130: gprs1();
 	fcall	_gprs1
 	line	131
 	
-l634:	
+l627:	
 	return
 	opt stack 0
 GLOBAL	__end_of_gprs
@@ -1589,9 +1423,9 @@ GLOBAL	__end_of_gprs
 
 	signat	_gprs,88
 	global	_gprs1
-psect	text518,local,class=CODE,delta=2
-global __ptext518
-__ptext518:
+psect	text524,local,class=CODE,delta=2
+global __ptext524
+__ptext524:
 
 ;; *************** function _gprs1 *****************
 ;; Defined at:
@@ -1625,7 +1459,7 @@ __ptext518:
 ;;		_gprs
 ;; This function uses a non-reentrant model
 ;;
-psect	text518
+psect	text524
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	133
 	global	__size_of_gprs1
@@ -1636,19 +1470,19 @@ _gprs1:
 ; Regs used in _gprs1: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	134
 	
-l2679:	
+l2620:	
 ;aqm.c: 134: serial_display("AT+HTTPPARA=");
 	movlw	((STR_19-__stringbase))&0ffh
 	fcall	_serial_display
 	line	135
 	
-l2681:	
+l2622:	
 ;aqm.c: 135: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	136
 	
-l2683:	
+l2624:	
 ;aqm.c: 136: serial_display("URL");
 	movlw	((STR_20-__stringbase))&0ffh
 	fcall	_serial_display
@@ -1666,25 +1500,25 @@ l2683:
 	fcall	_serial_out
 	line	140
 	
-l2685:	
-;aqm.c: 140: serial_display("livemonitoring.co.in/aqm1/mout.php");
+l2626:	
+;aqm.c: 140: serial_display("livemonitoring.co.in/agri01/mout.php");
 	movlw	((STR_21-__stringbase))&0ffh
 	fcall	_serial_display
 	line	141
 	
-l2687:	
+l2628:	
 ;aqm.c: 141: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	142
 	
-l2689:	
+l2630:	
 ;aqm.c: 142: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
 	line	143
 	
-l2691:	
+l2632:	
 ;aqm.c: 143: serial_display("AT+HTTPPARA=");
 	movlw	((STR_22-__stringbase))&0ffh
 	fcall	_serial_display
@@ -1694,36 +1528,36 @@ l2691:
 	fcall	_serial_out
 	line	145
 	
-l2693:	
+l2634:	
 ;aqm.c: 145: serial_display("CID");
 	movlw	((STR_23-__stringbase))&0ffh
 	fcall	_serial_display
 	line	146
 	
-l2695:	
+l2636:	
 ;aqm.c: 146: serial_out('"');
 	movlw	(022h)
 	fcall	_serial_out
 	line	147
 	
-l2697:	
+l2638:	
 ;aqm.c: 147: serial_out(',');
 	movlw	(02Ch)
 	fcall	_serial_out
 	line	148
 	
-l2699:	
+l2640:	
 ;aqm.c: 148: serial_out('1');
 	movlw	(031h)
 	fcall	_serial_out
 	line	149
 	
-l2701:	
+l2642:	
 ;aqm.c: 149: serial_out(0x0d);_delay((unsigned long)((2000)*(20e6/4000.0)));
 	movlw	(0Dh)
 	fcall	_serial_out
 	
-l2703:	
+l2644:	
 	opt asmopt_off
 movlw  51
 	bcf	status, 5	;RP0=0, select bank0
@@ -1733,24 +1567,24 @@ movlw	137
 movwf	((??_gprs1+0)+0+1),f
 	movlw	256
 movwf	((??_gprs1+0)+0),f
-u3117:
+u2817:
 	decfsz	((??_gprs1+0)+0),f
-	goto	u3117
+	goto	u2817
 	decfsz	((??_gprs1+0)+0+1),f
-	goto	u3117
+	goto	u2817
 	decfsz	((??_gprs1+0)+0+2),f
-	goto	u3117
+	goto	u2817
 opt asmopt_on
 
 	line	150
 	
-l2705:	
+l2646:	
 ;aqm.c: 150: serial_display("AT+HTTPACTION=0");
 	movlw	((STR_24-__stringbase))&0ffh
 	fcall	_serial_display
 	line	151
 	
-l2707:	
+l2648:	
 ;aqm.c: 151: serial_out(0x0d);_delay((unsigned long)((2000)*(20e6/4000.0)));
 	movlw	(0Dh)
 	fcall	_serial_out
@@ -1763,29 +1597,29 @@ movlw	137
 movwf	((??_gprs1+0)+0+1),f
 	movlw	256
 movwf	((??_gprs1+0)+0),f
-u3127:
+u2827:
 	decfsz	((??_gprs1+0)+0),f
-	goto	u3127
+	goto	u2827
 	decfsz	((??_gprs1+0)+0+1),f
-	goto	u3127
+	goto	u2827
 	decfsz	((??_gprs1+0)+0+2),f
-	goto	u3127
+	goto	u2827
 opt asmopt_on
 
 	line	152
 	
-l2709:	
+l2650:	
 ;aqm.c: 152: serial_display("AT+HTTPREAD");
 	movlw	((STR_25-__stringbase))&0ffh
 	fcall	_serial_display
 	line	153
 	
-l2711:	
+l2652:	
 ;aqm.c: 153: serial_out(0x0d);_delay((unsigned long)((3000)*(20e6/4000.0)));
 	movlw	(0Dh)
 	fcall	_serial_out
 	
-l2713:	
+l2654:	
 	opt asmopt_off
 movlw  76
 	bcf	status, 5	;RP0=0, select bank0
@@ -1795,31 +1629,31 @@ movlw	206
 movwf	((??_gprs1+0)+0+1),f
 	movlw	129
 movwf	((??_gprs1+0)+0),f
-u3137:
+u2837:
 	decfsz	((??_gprs1+0)+0),f
-	goto	u3137
+	goto	u2837
 	decfsz	((??_gprs1+0)+0+1),f
-	goto	u3137
+	goto	u2837
 	decfsz	((??_gprs1+0)+0+2),f
-	goto	u3137
+	goto	u2837
 	clrwdt
 opt asmopt_on
 
 	line	155
 	
-l2715:	
+l2656:	
 ;aqm.c: 155: if(p>=2)
 	movlw	(02h)
 	subwf	(_p),w
 	skipc
-	goto	u2921
-	goto	u2920
-u2921:
-	goto	l640
-u2920:
+	goto	u2721
+	goto	u2720
+u2721:
+	goto	l633
+u2720:
 	line	157
 	
-l2717:	
+l2658:	
 ;aqm.c: 156: {
 ;aqm.c: 157: if(s[1]=='1'){RA5=0;command(0x8D);lcd_display("ON ");}
 	bcf	status, 5	;RP0=0, select bank0
@@ -1827,56 +1661,56 @@ l2717:
 	movf	0+(_s)+01h,w
 	xorlw	031h
 	skipz
-	goto	u2931
-	goto	u2930
-u2931:
-	goto	l2725
-u2930:
+	goto	u2731
+	goto	u2730
+u2731:
+	goto	l2666
+u2730:
 	
-l2719:	
+l2660:	
 	bcf	(45/8),(45)&7
 	
-l2721:	
+l2662:	
 	movlw	(08Dh)
 	fcall	_command
 	
-l2723:	
+l2664:	
 	movlw	((STR_26-__stringbase))&0ffh
 	fcall	_lcd_display
-	goto	l2725
+	goto	l2666
 	
-l638:	
+l631:	
 	line	158
 	
-l2725:	
+l2666:	
 ;aqm.c: 158: if(s[1]=='2'){RA5=1;command(0x8D);lcd_display("OFF");}
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	0+(_s)+01h,w
 	xorlw	032h
 	skipz
-	goto	u2941
-	goto	u2940
-u2941:
-	goto	l2733
-u2940:
+	goto	u2741
+	goto	u2740
+u2741:
+	goto	l2674
+u2740:
 	
-l2727:	
+l2668:	
 	bsf	(45/8),(45)&7
 	
-l2729:	
+l2670:	
 	movlw	(08Dh)
 	fcall	_command
 	
-l2731:	
+l2672:	
 	movlw	((STR_27-__stringbase))&0ffh
 	fcall	_lcd_display
-	goto	l2733
+	goto	l2674
 	
-l639:	
+l632:	
 	line	159
 	
-l2733:	
+l2674:	
 ;aqm.c: 159: p=0;s[p]=0;
 	clrc
 	movlw	0
@@ -1892,13 +1726,13 @@ l2733:
 	movlw	1
 	bcf	status, 7	;select IRP bank0
 	movwf	indf
-	goto	l640
+	goto	l633
 	line	160
 	
-l637:	
+l630:	
 	line	161
 	
-l640:	
+l633:	
 	return
 	opt stack 0
 GLOBAL	__end_of_gprs1
@@ -1907,9 +1741,9 @@ GLOBAL	__end_of_gprs1
 
 	signat	_gprs1,88
 	global	_hexa_val
-psect	text519,local,class=CODE,delta=2
-global __ptext519
-__ptext519:
+psect	text525,local,class=CODE,delta=2
+global __ptext525
+__ptext525:
 
 ;; *************** function _hexa_val *****************
 ;; Defined at:
@@ -1942,7 +1776,7 @@ __ptext519:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text519
+psect	text525
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	193
 	global	__size_of_hexa_val
@@ -1953,7 +1787,7 @@ _hexa_val:
 ; Regs used in _hexa_val: [wreg+status,2+status,0+pclath+cstack]
 	line	194
 	
-l2677:	
+l2618:	
 ;aqm.c: 194: d=val/1000;
 	movlw	low(03E8h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -2107,7 +1941,7 @@ l2677:
 	fcall	_lcd_data
 	line	202
 	
-l667:	
+l660:	
 	return
 	opt stack 0
 GLOBAL	__end_of_hexa_val
@@ -2116,9 +1950,9 @@ GLOBAL	__end_of_hexa_val
 
 	signat	_hexa_val,4216
 	global	_lcd_display
-psect	text520,local,class=CODE,delta=2
-global __ptext520
-__ptext520:
+psect	text526,local,class=CODE,delta=2
+global __ptext526
+__ptext526:
 
 ;; *************** function _lcd_display *****************
 ;; Defined at:
@@ -2152,7 +1986,7 @@ __ptext520:
 ;;		_gprs1
 ;; This function uses a non-reentrant model
 ;;
-psect	text520
+psect	text526
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	229
 	global	__size_of_lcd_display
@@ -2167,21 +2001,21 @@ _lcd_display:
 	movwf	(lcd_display@word)
 	line	230
 	
-l2667:	
+l2608:	
 ;aqm.c: 230: while(*word){
-	goto	l2675
+	goto	l2616
 	
-l680:	
+l673:	
 	line	231
 	
-l2669:	
+l2610:	
 ;aqm.c: 231: lcd_data(*word++);
 	movf	(lcd_display@word),w
 	movwf	fsr0
 	fcall	stringdir
 	fcall	_lcd_data
 	
-l2671:	
+l2612:	
 	movlw	(01h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -2190,27 +2024,27 @@ l2671:
 	addwf	(lcd_display@word),f
 	line	232
 	
-l2673:	
+l2614:	
 ;aqm.c: 232: _delay((unsigned long)((1)*(20e6/4000.0)));
 	opt asmopt_off
 movlw	7
 movwf	((??_lcd_display+0)+0+1),f
 	movlw	125
 movwf	((??_lcd_display+0)+0),f
-u3147:
+u2847:
 	decfsz	((??_lcd_display+0)+0),f
-	goto	u3147
+	goto	u2847
 	decfsz	((??_lcd_display+0)+0+1),f
-	goto	u3147
+	goto	u2847
 opt asmopt_on
 
-	goto	l2675
+	goto	l2616
 	line	233
 	
-l679:	
+l672:	
 	line	230
 	
-l2675:	
+l2616:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(lcd_display@word),w
@@ -2218,17 +2052,17 @@ l2675:
 	fcall	stringdir
 	iorlw	0
 	skipz
-	goto	u2911
-	goto	u2910
-u2911:
-	goto	l2669
-u2910:
-	goto	l682
+	goto	u2711
+	goto	u2710
+u2711:
+	goto	l2610
+u2710:
+	goto	l675
 	
-l681:	
+l674:	
 	line	234
 	
-l682:	
+l675:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_display
@@ -2237,9 +2071,9 @@ GLOBAL	__end_of_lcd_display
 
 	signat	_lcd_display,4216
 	global	_lcd_init
-psect	text521,local,class=CODE,delta=2
-global __ptext521
-__ptext521:
+psect	text527,local,class=CODE,delta=2
+global __ptext527
+__ptext527:
 
 ;; *************** function _lcd_init *****************
 ;; Defined at:
@@ -2270,7 +2104,7 @@ __ptext521:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text521
+psect	text527
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	204
 	global	__size_of_lcd_init
@@ -2281,7 +2115,7 @@ _lcd_init:
 ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
 	line	205
 	
-l2665:	
+l2606:	
 ;aqm.c: 205: command(0x01);
 	movlw	(01h)
 	fcall	_command
@@ -2299,7 +2133,7 @@ l2665:
 	fcall	_command
 	line	209
 	
-l670:	
+l663:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_init
@@ -2308,9 +2142,9 @@ GLOBAL	__end_of_lcd_init
 
 	signat	_lcd_init,88
 	global	_gsm_init
-psect	text522,local,class=CODE,delta=2
-global __ptext522
-__ptext522:
+psect	text528,local,class=CODE,delta=2
+global __ptext528
+__ptext528:
 
 ;; *************** function _gsm_init *****************
 ;; Defined at:
@@ -2342,7 +2176,7 @@ __ptext522:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text522
+psect	text528
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	57
 	global	__size_of_gsm_init
@@ -2353,19 +2187,19 @@ _gsm_init:
 ; Regs used in _gsm_init: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	58
 	
-l2639:	
+l2580:	
 ;aqm.c: 58: serial_display("AT");
 	movlw	((STR_2-__stringbase))&0ffh
 	fcall	_serial_display
 	line	59
 	
-l2641:	
+l2582:	
 ;aqm.c: 59: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
 	line	60
 	
-l2643:	
+l2584:	
 ;aqm.c: 60: _delay((unsigned long)((500)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  13
@@ -2376,25 +2210,25 @@ movlw	163
 movwf	((??_gsm_init+0)+0+1),f
 	movlw	189
 movwf	((??_gsm_init+0)+0),f
-u3157:
+u2857:
 	decfsz	((??_gsm_init+0)+0),f
-	goto	u3157
+	goto	u2857
 	decfsz	((??_gsm_init+0)+0+1),f
-	goto	u3157
+	goto	u2857
 	decfsz	((??_gsm_init+0)+0+2),f
-	goto	u3157
+	goto	u2857
 	clrwdt
 opt asmopt_on
 
 	line	61
 	
-l2645:	
+l2586:	
 ;aqm.c: 61: serial_display("AT");
 	movlw	((STR_3-__stringbase))&0ffh
 	fcall	_serial_display
 	line	62
 	
-l2647:	
+l2588:	
 ;aqm.c: 62: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
@@ -2409,31 +2243,31 @@ movlw	163
 movwf	((??_gsm_init+0)+0+1),f
 	movlw	189
 movwf	((??_gsm_init+0)+0),f
-u3167:
+u2867:
 	decfsz	((??_gsm_init+0)+0),f
-	goto	u3167
+	goto	u2867
 	decfsz	((??_gsm_init+0)+0+1),f
-	goto	u3167
+	goto	u2867
 	decfsz	((??_gsm_init+0)+0+2),f
-	goto	u3167
+	goto	u2867
 	clrwdt
 opt asmopt_on
 
 	line	64
 	
-l2649:	
+l2590:	
 ;aqm.c: 64: serial_display("AT+CREG?");
 	movlw	((STR_4-__stringbase))&0ffh
 	fcall	_serial_display
 	line	65
 	
-l2651:	
+l2592:	
 ;aqm.c: 65: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
 	line	66
 	
-l2653:	
+l2594:	
 ;aqm.c: 66: _delay((unsigned long)((500)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  13
@@ -2444,19 +2278,19 @@ movlw	163
 movwf	((??_gsm_init+0)+0+1),f
 	movlw	189
 movwf	((??_gsm_init+0)+0),f
-u3177:
+u2877:
 	decfsz	((??_gsm_init+0)+0),f
-	goto	u3177
+	goto	u2877
 	decfsz	((??_gsm_init+0)+0+1),f
-	goto	u3177
+	goto	u2877
 	decfsz	((??_gsm_init+0)+0+2),f
-	goto	u3177
+	goto	u2877
 	clrwdt
 opt asmopt_on
 
 	line	70
 	
-l2655:	
+l2596:	
 ;aqm.c: 70: serial_display("AT+SAPBR=1,1");
 	movlw	((STR_5-__stringbase))&0ffh
 	fcall	_serial_display
@@ -2466,7 +2300,7 @@ l2655:
 	fcall	_serial_out
 	line	72
 	
-l2657:	
+l2598:	
 ;aqm.c: 72: _delay((unsigned long)((1000)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  26
@@ -2477,30 +2311,30 @@ movlw	69
 movwf	((??_gsm_init+0)+0+1),f
 	movlw	126
 movwf	((??_gsm_init+0)+0),f
-u3187:
+u2887:
 	decfsz	((??_gsm_init+0)+0),f
-	goto	u3187
+	goto	u2887
 	decfsz	((??_gsm_init+0)+0+1),f
-	goto	u3187
+	goto	u2887
 	decfsz	((??_gsm_init+0)+0+2),f
-	goto	u3187
+	goto	u2887
 opt asmopt_on
 
 	line	73
 	
-l2659:	
+l2600:	
 ;aqm.c: 73: serial_display("AT+HTTPINIT");
 	movlw	((STR_6-__stringbase))&0ffh
 	fcall	_serial_display
 	line	74
 	
-l2661:	
+l2602:	
 ;aqm.c: 74: serial_out(0x0d);
 	movlw	(0Dh)
 	fcall	_serial_out
 	line	75
 	
-l2663:	
+l2604:	
 ;aqm.c: 75: _delay((unsigned long)((1000)*(20e6/4000.0)));
 	opt asmopt_off
 movlw  26
@@ -2511,13 +2345,13 @@ movlw	69
 movwf	((??_gsm_init+0)+0+1),f
 	movlw	126
 movwf	((??_gsm_init+0)+0),f
-u3197:
+u2897:
 	decfsz	((??_gsm_init+0)+0),f
-	goto	u3197
+	goto	u2897
 	decfsz	((??_gsm_init+0)+0+1),f
-	goto	u3197
+	goto	u2897
 	decfsz	((??_gsm_init+0)+0+2),f
-	goto	u3197
+	goto	u2897
 opt asmopt_on
 
 	line	76
@@ -2531,9 +2365,9 @@ GLOBAL	__end_of_gsm_init
 
 	signat	_gsm_init,88
 	global	_lcd_data
-psect	text523,local,class=CODE,delta=2
-global __ptext523
-__ptext523:
+psect	text529,local,class=CODE,delta=2
+global __ptext529
+__ptext529:
 
 ;; *************** function _lcd_data *****************
 ;; Defined at:
@@ -2565,7 +2399,7 @@ __ptext523:
 ;;		_lcd_display
 ;; This function uses a non-reentrant model
 ;;
-psect	text523
+psect	text529
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	220
 	global	__size_of_lcd_data
@@ -2580,18 +2414,18 @@ _lcd_data:
 	movwf	(lcd_data@D)
 	line	221
 	
-l2631:	
+l2572:	
 ;aqm.c: 221: PORTD=D;
 	movf	(lcd_data@D),w
 	movwf	(8)	;volatile
 	line	222
 	
-l2633:	
+l2574:	
 ;aqm.c: 222: RA2=1;
 	bsf	(42/8),(42)&7
 	line	223
 	
-l2635:	
+l2576:	
 ;aqm.c: 223: RE0=1;
 	bsf	(72/8),(72)&7
 	line	224
@@ -2601,17 +2435,17 @@ movlw	65
 movwf	((??_lcd_data+0)+0+1),f
 	movlw	238
 movwf	((??_lcd_data+0)+0),f
-u3207:
+u2907:
 	decfsz	((??_lcd_data+0)+0),f
-	goto	u3207
+	goto	u2907
 	decfsz	((??_lcd_data+0)+0+1),f
-	goto	u3207
+	goto	u2907
 	clrwdt
 opt asmopt_on
 
 	line	225
 	
-l2637:	
+l2578:	
 ;aqm.c: 225: RE0=0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -2623,17 +2457,17 @@ movlw	65
 movwf	((??_lcd_data+0)+0+1),f
 	movlw	238
 movwf	((??_lcd_data+0)+0),f
-u3217:
+u2917:
 	decfsz	((??_lcd_data+0)+0),f
-	goto	u3217
+	goto	u2917
 	decfsz	((??_lcd_data+0)+0+1),f
-	goto	u3217
+	goto	u2917
 	clrwdt
 opt asmopt_on
 
 	line	227
 	
-l676:	
+l669:	
 	return
 	opt stack 0
 GLOBAL	__end_of_lcd_data
@@ -2642,9 +2476,9 @@ GLOBAL	__end_of_lcd_data
 
 	signat	_lcd_data,4216
 	global	_serial_display
-psect	text524,local,class=CODE,delta=2
-global __ptext524
-__ptext524:
+psect	text530,local,class=CODE,delta=2
+global __ptext530
+__ptext530:
 
 ;; *************** function _serial_display *****************
 ;; Defined at:
@@ -2652,18 +2486,18 @@ __ptext524:
 ;; Parameters:    Size  Location     Type
 ;;  w               1    wreg     PTR const unsigned char 
 ;;		 -> STR_25(12), STR_24(16), STR_23(4), STR_22(13), 
-;;		 -> STR_21(35), STR_20(4), STR_19(13), STR_18(16), 
-;;		 -> STR_17(4), STR_16(13), STR_15(8), STR_14(6), 
-;;		 -> STR_13(4), STR_12(4), STR_11(5), STR_10(4), 
-;;		 -> STR_9(38), STR_8(4), STR_7(13), STR_6(12), 
+;;		 -> STR_21(37), STR_20(4), STR_19(13), STR_18(16), 
+;;		 -> STR_17(4), STR_16(13), STR_15(15), STR_14(13), 
+;;		 -> STR_13(7), STR_12(5), STR_11(5), STR_10(8), 
+;;		 -> STR_9(45), STR_8(4), STR_7(13), STR_6(12), 
 ;;		 -> STR_5(13), STR_4(9), STR_3(3), STR_2(3), 
 ;; Auto vars:     Size  Location     Type
 ;;  w               1    2[BANK0 ] PTR const unsigned char 
 ;;		 -> STR_25(12), STR_24(16), STR_23(4), STR_22(13), 
-;;		 -> STR_21(35), STR_20(4), STR_19(13), STR_18(16), 
-;;		 -> STR_17(4), STR_16(13), STR_15(8), STR_14(6), 
-;;		 -> STR_13(4), STR_12(4), STR_11(5), STR_10(4), 
-;;		 -> STR_9(38), STR_8(4), STR_7(13), STR_6(12), 
+;;		 -> STR_21(37), STR_20(4), STR_19(13), STR_18(16), 
+;;		 -> STR_17(4), STR_16(13), STR_15(15), STR_14(13), 
+;;		 -> STR_13(7), STR_12(5), STR_11(5), STR_10(8), 
+;;		 -> STR_9(45), STR_8(4), STR_7(13), STR_6(12), 
 ;;		 -> STR_5(13), STR_4(9), STR_3(3), STR_2(3), 
 ;; Return value:  Size  Location     Type
 ;;		None               void
@@ -2689,7 +2523,7 @@ __ptext524:
 ;;		_gprs1
 ;; This function uses a non-reentrant model
 ;;
-psect	text524
+psect	text530
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	169
 	global	__size_of_serial_display
@@ -2704,50 +2538,50 @@ _serial_display:
 	movwf	(serial_display@w)
 	line	170
 	
-l2623:	
+l2564:	
 ;aqm.c: 170: while(*w){
-	goto	l2629
+	goto	l2570
 	
-l650:	
+l643:	
 	line	171
 	
-l2625:	
+l2566:	
 ;aqm.c: 171: serial_out(*w++);
 	movf	(serial_display@w),w
 	movwf	fsr0
 	fcall	stringdir
 	fcall	_serial_out
 	
-l2627:	
+l2568:	
 	movlw	(01h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(??_serial_display+0)+0
 	movf	(??_serial_display+0)+0,w
 	addwf	(serial_display@w),f
-	goto	l2629
+	goto	l2570
 	line	172
 	
-l649:	
+l642:	
 	line	170
 	
-l2629:	
+l2570:	
 	movf	(serial_display@w),w
 	movwf	fsr0
 	fcall	stringdir
 	iorlw	0
 	skipz
-	goto	u2901
-	goto	u2900
-u2901:
-	goto	l2625
-u2900:
-	goto	l652
+	goto	u2701
+	goto	u2700
+u2701:
+	goto	l2566
+u2700:
+	goto	l645
 	
-l651:	
+l644:	
 	line	173
 	
-l652:	
+l645:	
 	return
 	opt stack 0
 GLOBAL	__end_of_serial_display
@@ -2756,9 +2590,9 @@ GLOBAL	__end_of_serial_display
 
 	signat	_serial_display,4216
 	global	_command
-psect	text525,local,class=CODE,delta=2
-global __ptext525
-__ptext525:
+psect	text531,local,class=CODE,delta=2
+global __ptext531
+__ptext531:
 
 ;; *************** function _command *****************
 ;; Defined at:
@@ -2791,7 +2625,7 @@ __ptext525:
 ;;		_lcd_init
 ;; This function uses a non-reentrant model
 ;;
-psect	text525
+psect	text531
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	211
 	global	__size_of_command
@@ -2806,18 +2640,18 @@ _command:
 	movwf	(command@com)
 	line	212
 	
-l2615:	
+l2556:	
 ;aqm.c: 212: PORTD=com;
 	movf	(command@com),w
 	movwf	(8)	;volatile
 	line	213
 	
-l2617:	
+l2558:	
 ;aqm.c: 213: RA2=0;
 	bcf	(42/8),(42)&7
 	line	214
 	
-l2619:	
+l2560:	
 ;aqm.c: 214: RE0=1;
 	bsf	(72/8),(72)&7
 	line	215
@@ -2827,17 +2661,17 @@ movlw	65
 movwf	((??_command+0)+0+1),f
 	movlw	238
 movwf	((??_command+0)+0),f
-u3227:
+u2927:
 	decfsz	((??_command+0)+0),f
-	goto	u3227
+	goto	u2927
 	decfsz	((??_command+0)+0+1),f
-	goto	u3227
+	goto	u2927
 	clrwdt
 opt asmopt_on
 
 	line	216
 	
-l2621:	
+l2562:	
 ;aqm.c: 216: RE0=0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -2849,17 +2683,17 @@ movlw	65
 movwf	((??_command+0)+0+1),f
 	movlw	238
 movwf	((??_command+0)+0),f
-u3237:
+u2937:
 	decfsz	((??_command+0)+0),f
-	goto	u3237
+	goto	u2937
 	decfsz	((??_command+0)+0+1),f
-	goto	u3237
+	goto	u2937
 	clrwdt
 opt asmopt_on
 
 	line	218
 	
-l673:	
+l666:	
 	return
 	opt stack 0
 GLOBAL	__end_of_command
@@ -2868,9 +2702,9 @@ GLOBAL	__end_of_command
 
 	signat	_command,4216
 	global	___lwmod
-psect	text526,local,class=CODE,delta=2
-global __ptext526
-__ptext526:
+psect	text532,local,class=CODE,delta=2
+global __ptext532
+__ptext532:
 
 ;; *************** function ___lwmod *****************
 ;; Defined at:
@@ -2902,7 +2736,7 @@ __ptext526:
 ;;		_hexa_val
 ;; This function uses a non-reentrant model
 ;;
-psect	text526
+psect	text532
 	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.80\sources\lwmod.c"
 	line	5
 	global	__size_of___lwmod
@@ -2913,127 +2747,127 @@ ___lwmod:
 ; Regs used in ___lwmod: [wreg+status,2+status,0]
 	line	8
 	
-l2593:	
+l2534:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(___lwmod@divisor+1),w
 	iorwf	(___lwmod@divisor),w
 	skipnz
-	goto	u2841
-	goto	u2840
-u2841:
-	goto	l2611
-u2840:
+	goto	u2641
+	goto	u2640
+u2641:
+	goto	l2552
+u2640:
 	line	9
 	
-l2595:	
+l2536:	
 	clrf	(___lwmod@counter)
 	bsf	status,0
 	rlf	(___lwmod@counter),f
 	line	10
-	goto	l2601
+	goto	l2542
 	
-l709:	
+l702:	
 	line	11
 	
-l2597:	
+l2538:	
 	movlw	01h
 	
-u2855:
+u2655:
 	clrc
 	rlf	(___lwmod@divisor),f
 	rlf	(___lwmod@divisor+1),f
 	addlw	-1
 	skipz
-	goto	u2855
+	goto	u2655
 	line	12
 	
-l2599:	
+l2540:	
 	movlw	(01h)
 	movwf	(??___lwmod+0)+0
 	movf	(??___lwmod+0)+0,w
 	addwf	(___lwmod@counter),f
-	goto	l2601
+	goto	l2542
 	line	13
 	
-l708:	
+l701:	
 	line	10
 	
-l2601:	
+l2542:	
 	btfss	(___lwmod@divisor+1),(15)&7
-	goto	u2861
-	goto	u2860
-u2861:
-	goto	l2597
-u2860:
-	goto	l2603
+	goto	u2661
+	goto	u2660
+u2661:
+	goto	l2538
+u2660:
+	goto	l2544
 	
-l710:	
-	goto	l2603
+l703:	
+	goto	l2544
 	line	14
 	
-l711:	
+l704:	
 	line	15
 	
-l2603:	
+l2544:	
 	movf	(___lwmod@divisor+1),w
 	subwf	(___lwmod@dividend+1),w
 	skipz
-	goto	u2875
+	goto	u2675
 	movf	(___lwmod@divisor),w
 	subwf	(___lwmod@dividend),w
-u2875:
+u2675:
 	skipc
-	goto	u2871
-	goto	u2870
-u2871:
-	goto	l2607
-u2870:
+	goto	u2671
+	goto	u2670
+u2671:
+	goto	l2548
+u2670:
 	line	16
 	
-l2605:	
+l2546:	
 	movf	(___lwmod@divisor),w
 	subwf	(___lwmod@dividend),f
 	movf	(___lwmod@divisor+1),w
 	skipc
 	decf	(___lwmod@dividend+1),f
 	subwf	(___lwmod@dividend+1),f
-	goto	l2607
+	goto	l2548
 	
-l712:	
+l705:	
 	line	17
 	
-l2607:	
+l2548:	
 	movlw	01h
 	
-u2885:
+u2685:
 	clrc
 	rrf	(___lwmod@divisor+1),f
 	rrf	(___lwmod@divisor),f
 	addlw	-1
 	skipz
-	goto	u2885
+	goto	u2685
 	line	18
 	
-l2609:	
+l2550:	
 	movlw	low(01h)
 	subwf	(___lwmod@counter),f
 	btfss	status,2
-	goto	u2891
-	goto	u2890
-u2891:
-	goto	l2603
-u2890:
-	goto	l2611
+	goto	u2691
+	goto	u2690
+u2691:
+	goto	l2544
+u2690:
+	goto	l2552
 	
-l713:	
-	goto	l2611
+l706:	
+	goto	l2552
 	line	19
 	
-l707:	
+l700:	
 	line	20
 	
-l2611:	
+l2552:	
 	movf	(___lwmod@dividend+1),w
 	clrf	(?___lwmod+1)
 	addwf	(?___lwmod+1)
@@ -3041,12 +2875,12 @@ l2611:
 	clrf	(?___lwmod)
 	addwf	(?___lwmod)
 
-	goto	l714
+	goto	l707
 	
-l2613:	
+l2554:	
 	line	21
 	
-l714:	
+l707:	
 	return
 	opt stack 0
 GLOBAL	__end_of___lwmod
@@ -3055,9 +2889,9 @@ GLOBAL	__end_of___lwmod
 
 	signat	___lwmod,8314
 	global	___lwdiv
-psect	text527,local,class=CODE,delta=2
-global __ptext527
-__ptext527:
+psect	text533,local,class=CODE,delta=2
+global __ptext533
+__ptext533:
 
 ;; *************** function ___lwdiv *****************
 ;; Defined at:
@@ -3090,7 +2924,7 @@ __ptext527:
 ;;		_hexa_val
 ;; This function uses a non-reentrant model
 ;;
-psect	text527
+psect	text533
 	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.80\sources\lwdiv.c"
 	line	5
 	global	__size_of___lwdiv
@@ -3101,7 +2935,7 @@ ___lwdiv:
 ; Regs used in ___lwdiv: [wreg+status,2+status,0]
 	line	9
 	
-l2569:	
+l2510:	
 	movlw	low(0)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -3112,89 +2946,89 @@ l2569:
 	movf	(___lwdiv@divisor+1),w
 	iorwf	(___lwdiv@divisor),w
 	skipnz
-	goto	u2771
-	goto	u2770
-u2771:
-	goto	l2589
-u2770:
+	goto	u2571
+	goto	u2570
+u2571:
+	goto	l2530
+u2570:
 	line	11
 	
-l2571:	
+l2512:	
 	clrf	(___lwdiv@counter)
 	bsf	status,0
 	rlf	(___lwdiv@counter),f
 	line	12
-	goto	l2577
+	goto	l2518
 	
-l699:	
+l692:	
 	line	13
 	
-l2573:	
+l2514:	
 	movlw	01h
 	
-u2785:
+u2585:
 	clrc
 	rlf	(___lwdiv@divisor),f
 	rlf	(___lwdiv@divisor+1),f
 	addlw	-1
 	skipz
-	goto	u2785
+	goto	u2585
 	line	14
 	
-l2575:	
+l2516:	
 	movlw	(01h)
 	movwf	(??___lwdiv+0)+0
 	movf	(??___lwdiv+0)+0,w
 	addwf	(___lwdiv@counter),f
-	goto	l2577
+	goto	l2518
 	line	15
 	
-l698:	
+l691:	
 	line	12
 	
-l2577:	
+l2518:	
 	btfss	(___lwdiv@divisor+1),(15)&7
-	goto	u2791
-	goto	u2790
-u2791:
-	goto	l2573
-u2790:
-	goto	l2579
+	goto	u2591
+	goto	u2590
+u2591:
+	goto	l2514
+u2590:
+	goto	l2520
 	
-l700:	
-	goto	l2579
+l693:	
+	goto	l2520
 	line	16
 	
-l701:	
+l694:	
 	line	17
 	
-l2579:	
+l2520:	
 	movlw	01h
 	
-u2805:
+u2605:
 	clrc
 	rlf	(___lwdiv@quotient),f
 	rlf	(___lwdiv@quotient+1),f
 	addlw	-1
 	skipz
-	goto	u2805
+	goto	u2605
 	line	18
 	movf	(___lwdiv@divisor+1),w
 	subwf	(___lwdiv@dividend+1),w
 	skipz
-	goto	u2815
+	goto	u2615
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),w
-u2815:
+u2615:
 	skipc
-	goto	u2811
-	goto	u2810
-u2811:
-	goto	l2585
-u2810:
+	goto	u2611
+	goto	u2610
+u2611:
+	goto	l2526
+u2610:
 	line	19
 	
-l2581:	
+l2522:	
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),f
 	movf	(___lwdiv@divisor+1),w
@@ -3203,45 +3037,45 @@ l2581:
 	subwf	(___lwdiv@dividend+1),f
 	line	20
 	
-l2583:	
+l2524:	
 	bsf	(___lwdiv@quotient)+(0/8),(0)&7
-	goto	l2585
+	goto	l2526
 	line	21
 	
-l702:	
+l695:	
 	line	22
 	
-l2585:	
+l2526:	
 	movlw	01h
 	
-u2825:
+u2625:
 	clrc
 	rrf	(___lwdiv@divisor+1),f
 	rrf	(___lwdiv@divisor),f
 	addlw	-1
 	skipz
-	goto	u2825
+	goto	u2625
 	line	23
 	
-l2587:	
+l2528:	
 	movlw	low(01h)
 	subwf	(___lwdiv@counter),f
 	btfss	status,2
-	goto	u2831
-	goto	u2830
-u2831:
-	goto	l2579
-u2830:
-	goto	l2589
+	goto	u2631
+	goto	u2630
+u2631:
+	goto	l2520
+u2630:
+	goto	l2530
 	
-l703:	
-	goto	l2589
+l696:	
+	goto	l2530
 	line	24
 	
-l697:	
+l690:	
 	line	25
 	
-l2589:	
+l2530:	
 	movf	(___lwdiv@quotient+1),w
 	clrf	(?___lwdiv+1)
 	addwf	(?___lwdiv+1)
@@ -3249,12 +3083,12 @@ l2589:
 	clrf	(?___lwdiv)
 	addwf	(?___lwdiv)
 
-	goto	l704
+	goto	l697
 	
-l2591:	
+l2532:	
 	line	26
 	
-l704:	
+l697:	
 	return
 	opt stack 0
 GLOBAL	__end_of___lwdiv
@@ -3263,9 +3097,9 @@ GLOBAL	__end_of___lwdiv
 
 	signat	___lwdiv,8314
 	global	_serial_out
-psect	text528,local,class=CODE,delta=2
-global __ptext528
-__ptext528:
+psect	text534,local,class=CODE,delta=2
+global __ptext534
+__ptext534:
 
 ;; *************** function _serial_out *****************
 ;; Defined at:
@@ -3299,7 +3133,7 @@ __ptext528:
 ;;		_serial_display
 ;; This function uses a non-reentrant model
 ;;
-psect	text528
+psect	text534
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	163
 	global	__size_of_serial_out
@@ -3314,31 +3148,31 @@ _serial_out:
 	movwf	(serial_out@z)
 	line	164
 	
-l2567:	
+l2508:	
 ;aqm.c: 164: TXREG=z;
 	movf	(serial_out@z),w
 	movwf	(25)	;volatile
 	line	165
 ;aqm.c: 165: while(!TXIF);
-	goto	l643
+	goto	l636
 	
-l644:	
+l637:	
 	
-l643:	
+l636:	
 	btfss	(100/8),(100)&7
-	goto	u2761
-	goto	u2760
-u2761:
-	goto	l643
-u2760:
+	goto	u2561
+	goto	u2560
+u2561:
+	goto	l636
+u2560:
 	
-l645:	
+l638:	
 	line	166
 ;aqm.c: 166: TXIF=0;
 	bcf	(100/8),(100)&7
 	line	167
 	
-l646:	
+l639:	
 	return
 	opt stack 0
 GLOBAL	__end_of_serial_out
@@ -3347,9 +3181,9 @@ GLOBAL	__end_of_serial_out
 
 	signat	_serial_out,4216
 	global	_adc_conversion
-psect	text529,local,class=CODE,delta=2
-global __ptext529
-__ptext529:
+psect	text535,local,class=CODE,delta=2
+global __ptext535
+__ptext535:
 
 ;; *************** function _adc_conversion *****************
 ;; Defined at:
@@ -3380,7 +3214,7 @@ __ptext529:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text529
+psect	text535
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	184
 	global	__size_of_adc_conversion
@@ -3391,7 +3225,7 @@ _adc_conversion:
 ; Regs used in _adc_conversion: [wreg+status,2+status,0+btemp+1]
 	line	185
 	
-l2559:	
+l2500:	
 ;aqm.c: 185: ADCON0=0XC5;
 	movlw	(0C5h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -3399,23 +3233,23 @@ l2559:
 	movwf	(31)	;volatile
 	line	186
 ;aqm.c: 186: while(ADGO);
-	goto	l661
+	goto	l654
 	
-l662:	
+l655:	
 	
-l661:	
+l654:	
 	btfsc	(250/8),(250)&7
-	goto	u2731
-	goto	u2730
-u2731:
-	goto	l661
-u2730:
-	goto	l2561
+	goto	u2531
+	goto	u2530
+u2531:
+	goto	l654
+u2530:
+	goto	l2502
 	
-l663:	
+l656:	
 	line	187
 	
-l2561:	
+l2502:	
 ;aqm.c: 187: a=ADRESL;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
@@ -3439,7 +3273,7 @@ l2561:
 	movwf	(_b+1)
 	line	189
 	
-l2563:	
+l2504:	
 ;aqm.c: 189: b=b*256;
 	movf	(_b+1),w
 	movwf	(??_adc_conversion+0)+0+1
@@ -3447,32 +3281,32 @@ l2563:
 	movwf	(??_adc_conversion+0)+0
 	movlw	08h
 	movwf	btemp+1
-u2745:
+u2545:
 	clrc
 	rlf	(??_adc_conversion+0)+0,f
 	rlf	(??_adc_conversion+0)+1,f
 	decfsz	btemp+1,f
-	goto	u2745
+	goto	u2545
 	movf	0+(??_adc_conversion+0)+0,w
 	movwf	(_b)
 	movf	1+(??_adc_conversion+0)+0,w
 	movwf	(_b+1)
 	line	190
 	
-l2565:	
+l2506:	
 ;aqm.c: 190: c=b+a/2;
 	movf	(_a+1),w
 	movwf	(??_adc_conversion+0)+0+1
 	movf	(_a),w
 	movwf	(??_adc_conversion+0)+0
 	movlw	01h
-u2755:
+u2555:
 	clrc
 	rrf	(??_adc_conversion+0)+1,f
 	rrf	(??_adc_conversion+0)+0,f
 	addlw	-1
 	skipz
-	goto	u2755
+	goto	u2555
 	movf	(_b),w
 	addwf	0+(??_adc_conversion+0)+0,w
 	movwf	(_c)
@@ -3483,7 +3317,7 @@ u2755:
 	movwf	1+(_c)
 	line	191
 	
-l664:	
+l657:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_conversion
@@ -3492,9 +3326,9 @@ GLOBAL	__end_of_adc_conversion
 
 	signat	_adc_conversion,88
 	global	_serial_init
-psect	text530,local,class=CODE,delta=2
-global __ptext530
-__ptext530:
+psect	text536,local,class=CODE,delta=2
+global __ptext536
+__ptext536:
 
 ;; *************** function _serial_init *****************
 ;; Defined at:
@@ -3525,7 +3359,7 @@ __ptext530:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text530
+psect	text536
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	78
 	global	__size_of_serial_init
@@ -3536,7 +3370,7 @@ _serial_init:
 ; Regs used in _serial_init: [wreg]
 	line	79
 	
-l2223:	
+l2190:	
 ;aqm.c: 79: SPBRG=129;
 	movlw	(081h)
 	bsf	status, 5	;RP0=1, select bank1
@@ -3544,50 +3378,50 @@ l2223:
 	movwf	(153)^080h	;volatile
 	line	80
 	
-l2225:	
+l2192:	
 ;aqm.c: 80: BRGH=1;
 	bsf	(1218/8)^080h,(1218)&7
 	line	81
 	
-l2227:	
+l2194:	
 ;aqm.c: 81: SYNC=0;
 	bcf	(1220/8)^080h,(1220)&7
 	line	82
 	
-l2229:	
+l2196:	
 ;aqm.c: 82: SPEN=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(199/8),(199)&7
 	line	83
 	
-l2231:	
+l2198:	
 ;aqm.c: 83: RCIE=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bsf	(1125/8)^080h,(1125)&7
 	line	84
 	
-l2233:	
+l2200:	
 ;aqm.c: 84: CREN=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(196/8),(196)&7
 	line	85
 	
-l2235:	
+l2202:	
 ;aqm.c: 85: TXEN=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bsf	(1221/8)^080h,(1221)&7
 	line	86
 	
-l2237:	
+l2204:	
 ;aqm.c: 86: GIE=1;
 	bsf	(95/8),(95)&7
 	line	87
 	
-l2239:	
+l2206:	
 ;aqm.c: 87: PEIE=1;
 	bsf	(94/8),(94)&7
 	line	88
@@ -3601,9 +3435,9 @@ GLOBAL	__end_of_serial_init
 
 	signat	_serial_init,88
 	global	_funct
-psect	text531,local,class=CODE,delta=2
-global __ptext531
-__ptext531:
+psect	text537,local,class=CODE,delta=2
+global __ptext537
+__ptext537:
 
 ;; *************** function _funct *****************
 ;; Defined at:
@@ -3633,7 +3467,7 @@ __ptext531:
 ;;		Interrupt level 1
 ;; This function uses a non-reentrant model
 ;;
-psect	text531
+psect	text537
 	file	"C:\Users\ADMIN\Desktop\aqm\aqm.c"
 	line	175
 	global	__size_of_funct
@@ -3661,25 +3495,25 @@ interrupt_function:
 	movf	btemp+1,w
 	movwf	(??_funct+4)
 	ljmp	_funct
-psect	text531
+psect	text537
 	line	176
 	
-i1l2251:	
+i1l2218:	
 ;aqm.c: 176: if(RCIF){
 	btfss	(101/8),(101)&7
-	goto	u241_21
-	goto	u241_20
-u241_21:
-	goto	i1l658
-u241_20:
+	goto	u231_21
+	goto	u231_20
+u231_21:
+	goto	i1l651
+u231_20:
 	line	177
 	
-i1l2253:	
+i1l2220:	
 ;aqm.c: 177: RCIF=0;
 	bcf	(101/8),(101)&7
 	line	178
 	
-i1l2255:	
+i1l2222:	
 ;aqm.c: 178: s[p]=RCREG;
 	movf	(26),w	;volatile
 	movwf	(??_funct+0)+0
@@ -3691,44 +3525,44 @@ i1l2255:
 	movwf	indf
 	line	179
 	
-i1l2257:	
+i1l2224:	
 ;aqm.c: 179: if(s[0]=='*'){p++;}
 	movf	(_s),w
 	xorlw	02Ah
 	skipz
-	goto	u242_21
-	goto	u242_20
-u242_21:
-	goto	i1l2261
-u242_20:
+	goto	u232_21
+	goto	u232_20
+u232_21:
+	goto	i1l2228
+u232_20:
 	
-i1l2259:	
+i1l2226:	
 	movlw	(01h)
 	movwf	(??_funct+0)+0
 	movf	(??_funct+0)+0,w
 	addwf	(_p),f
-	goto	i1l658
+	goto	i1l651
 	line	180
 	
-i1l656:	
+i1l649:	
 	
-i1l2261:	
+i1l2228:	
 ;aqm.c: 180: else {p=0;}
 	clrc
 	movlw	0
 	btfsc	status,0
 	movlw	1
 	movwf	(_p)
-	goto	i1l658
+	goto	i1l651
 	
-i1l657:	
-	goto	i1l658
+i1l650:	
+	goto	i1l651
 	line	181
 	
-i1l655:	
+i1l648:	
 	line	182
 	
-i1l658:	
+i1l651:	
 	movf	(??_funct+4),w
 	movwf	btemp+1
 	movf	(??_funct+3),w
@@ -3746,9 +3580,9 @@ GLOBAL	__end_of_funct
 ;; =============== function _funct ends ============
 
 	signat	_funct,88
-psect	text532,local,class=CODE,delta=2
-global __ptext532
-__ptext532:
+psect	text538,local,class=CODE,delta=2
+global __ptext538
+__ptext538:
 	global	btemp
 	btemp set 07Eh
 

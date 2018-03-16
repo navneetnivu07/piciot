@@ -962,7 +962,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;aqm.c: 44: command(0x80);
 "44
 [e ( _command (1 -> -> 128 `i `uc ]
-[; ;aqm.c: 45: lcd_display("VAL :");
+[; ;aqm.c: 45: lcd_display("VOLT:");
 "45
 [e ( _lcd_display (1 :s 1C ]
 [; ;aqm.c: 46: command(0x87);
@@ -1114,87 +1114,61 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;aqm.c: 95: serial_out('"');
 "95
 [e ( _serial_out (1 -> -> 34 `ui `uc ]
-[; ;aqm.c: 97: serial_display("livemonitoring.co.in/aqm1/insert.php?");
+[; ;aqm.c: 97: serial_display("livemonitoring.co.in/agri01/insert.php?temp=");
 "97
 [e ( _serial_display (1 :s 9C ]
-[; ;aqm.c: 98: if(j >= 10 && j <= 20){
+[; ;aqm.c: 98: serial_out(m+0x30);
 "98
-[e $ ! && >= _j -> -> 10 `i `ui <= _j -> -> 20 `i `ui 8  ]
-{
-[; ;aqm.c: 99: serial_display("o2=");
+[e ( _serial_out (1 -> + _m -> -> 48 `i `ui `uc ]
+[; ;aqm.c: 99: serial_out(n+0x30);
 "99
-[e ( _serial_display (1 :s 10C ]
+[e ( _serial_out (1 -> + _n -> -> 48 `i `ui `uc ]
+[; ;aqm.c: 100: serial_display("&moist=");
 "100
-}
-[; ;aqm.c: 100: } else if(j >= 21 && j <= 30){
-[e $U 9  ]
-[e :U 8 ]
-[e $ ! && >= _j -> -> 21 `i `ui <= _j -> -> 30 `i `ui 10  ]
-{
-[; ;aqm.c: 101: serial_display("co2=");
-"101
-[e ( _serial_display (1 :s 11C ]
+[e ( _serial_display (1 :s 10C ]
+[; ;aqm.c: 102: if(RC0==0){
 "102
-}
-[; ;aqm.c: 102: } else if(j >= 31 && j <= 40){
-[e $U 11  ]
-[e :U 10 ]
-[e $ ! && >= _j -> -> 31 `i `ui <= _j -> -> 40 `i `ui 12  ]
+[e $ ! == -> _RC0 `i -> 0 `i 8  ]
 {
-[; ;aqm.c: 103: serial_display("co=");
+[; ;aqm.c: 103: serial_display("FULL");
 "103
-[e ( _serial_display (1 :s 12C ]
+[e ( _serial_display (1 :s 11C ]
 "104
 }
-[; ;aqm.c: 104: } else if(j >= 41 && j <= 50){
-[e $U 13  ]
-[e :U 12 ]
-[e $ ! && >= _j -> -> 41 `i `ui <= _j -> -> 50 `i `ui 14  ]
+[; ;aqm.c: 104: }else{
+[e $U 9  ]
+[e :U 8 ]
 {
-[; ;aqm.c: 105: serial_display("oh=");
+[; ;aqm.c: 105: serial_display("DRY ");
 "105
-[e ( _serial_display (1 :s 13C ]
+[e ( _serial_display (1 :s 12C ]
 "106
 }
-[; ;aqm.c: 106: } else if(j >= 51 && j <= 60){
-[e $U 15  ]
-[e :U 14 ]
-[e $ ! && >= _j -> -> 51 `i `ui <= _j -> -> 60 `i `ui 16  ]
-{
-[; ;aqm.c: 107: serial_display("meth=");
-"107
-[e ( _serial_display (1 :s 14C ]
-"108
-}
-[; ;aqm.c: 108: } else if(j >= 61 && j <= 150){
-[e $U 17  ]
-[e :U 16 ]
-[e $ ! && >= _j -> -> 61 `i `ui <= _j -> -> 150 `i `ui 18  ]
-{
-[; ;aqm.c: 109: serial_display("butane=");
-"109
-[e ( _serial_display (1 :s 15C ]
-"110
-}
-[e :U 18 ]
-"111
-[e :U 17 ]
-[e :U 15 ]
-[e :U 13 ]
-[e :U 11 ]
 [e :U 9 ]
-[; ;aqm.c: 110: }
-[; ;aqm.c: 111: serial_out(d+0x30);
-[e ( _serial_out (1 -> + _d -> -> 48 `i `ui `uc ]
-[; ;aqm.c: 112: serial_out(k+0x30);
+[; ;aqm.c: 106: }
+[; ;aqm.c: 108: serial_display("&anim=");
+"108
+[e ( _serial_display (1 :s 13C ]
+[; ;aqm.c: 110: if(RC1==1){
+"110
+[e $ ! == -> _RC1 `i -> 1 `i 10  ]
+{
+[; ;aqm.c: 111: serial_display("AnimalDetect");
+"111
+[e ( _serial_display (1 :s 14C ]
 "112
-[e ( _serial_out (1 -> + _k -> -> 48 `i `ui `uc ]
-[; ;aqm.c: 113: serial_out(m+0x30);
+}
+[; ;aqm.c: 112: }else{
+[e $U 11  ]
+[e :U 10 ]
+{
+[; ;aqm.c: 113: serial_display("NoAnimalDetect");
 "113
-[e ( _serial_out (1 -> + _m -> -> 48 `i `ui `uc ]
-[; ;aqm.c: 114: serial_out(n+0x30);
+[e ( _serial_display (1 :s 15C ]
 "114
-[e ( _serial_out (1 -> + _n -> -> 48 `i `ui `uc ]
+}
+[e :U 11 ]
+[; ;aqm.c: 114: }
 [; ;aqm.c: 116: serial_out('"');
 "116
 [e ( _serial_out (1 -> -> 34 `ui `uc ]
@@ -1268,7 +1242,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;aqm.c: 139: serial_out('"');
 "139
 [e ( _serial_out (1 -> -> 34 `ui `uc ]
-[; ;aqm.c: 140: serial_display("livemonitoring.co.in/aqm1/mout.php");
+[; ;aqm.c: 140: serial_display("livemonitoring.co.in/agri01/mout.php");
 "140
 [e ( _serial_display (1 :s 21C ]
 [; ;aqm.c: 141: serial_out('"');
@@ -1315,39 +1289,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 3000 `i `d / .20e6 .4000.0 `ul ]
 [; ;aqm.c: 155: if(p>=2)
 "155
-[e $ ! >= -> _p `i -> 2 `i 20  ]
+[e $ ! >= -> _p `i -> 2 `i 13  ]
 [; ;aqm.c: 156: {
 "156
 {
 [; ;aqm.c: 157: if(s[1]=='1'){RA5=0;command(0x8D);lcd_display("ON ");}
 "157
-[e $ ! == -> *U + &U _s * -> -> -> 1 `i `ui `ux -> -> # *U &U _s `ui `ux `ui -> 49 `ui 21  ]
+[e $ ! == -> *U + &U _s * -> -> -> 1 `i `ui `ux -> -> # *U &U _s `ui `ux `ui -> 49 `ui 14  ]
 {
 [e = _RA5 -> -> 0 `i `b ]
 [e ( _command (1 -> -> 141 `i `uc ]
 [e ( _lcd_display (1 :s 26C ]
 }
-[e :U 21 ]
+[e :U 14 ]
 [; ;aqm.c: 158: if(s[1]=='2'){RA5=1;command(0x8D);lcd_display("OFF");}
 "158
-[e $ ! == -> *U + &U _s * -> -> -> 1 `i `ui `ux -> -> # *U &U _s `ui `ux `ui -> 50 `ui 22  ]
+[e $ ! == -> *U + &U _s * -> -> -> 1 `i `ui `ux -> -> # *U &U _s `ui `ux `ui -> 50 `ui 15  ]
 {
 [e = _RA5 -> -> 1 `i `b ]
 [e ( _command (1 -> -> 141 `i `uc ]
 [e ( _lcd_display (1 :s 27C ]
 }
-[e :U 22 ]
+[e :U 15 ]
 [; ;aqm.c: 159: p=0;s[p]=0;
 "159
 [e = _p -> -> 0 `i `uc ]
 [e = *U + &U _s * -> _p `ux -> -> # *U &U _s `ui `ux -> -> 0 `i `uc ]
 "160
 }
-[e :U 20 ]
+[e :U 13 ]
 [; ;aqm.c: 160: }
 [; ;aqm.c: 161: }
 "161
-[e :UE 19 ]
+[e :UE 12 ]
 }
 "163
 [v _serial_out `(v 1 ef1`uc ]
@@ -1361,17 +1335,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TXREG _z ]
 [; ;aqm.c: 165: while(!TXIF);
 "165
-[e $U 24  ]
-[e :U 25 ]
-[e :U 24 ]
-[e $ ! _TXIF 25  ]
-[e :U 26 ]
+[e $U 17  ]
+[e :U 18 ]
+[e :U 17 ]
+[e $ ! _TXIF 18  ]
+[e :U 19 ]
 [; ;aqm.c: 166: TXIF=0;
 "166
 [e = _TXIF -> -> 0 `i `b ]
 [; ;aqm.c: 167: }
 "167
-[e :UE 23 ]
+[e :UE 16 ]
 }
 "169
 [v _serial_display `(v 1 ef1`*Cuc ]
@@ -1382,22 +1356,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;aqm.c: 170: while(*w){
 "170
-[e $U 28  ]
-[e :U 29 ]
+[e $U 21  ]
+[e :U 22 ]
 {
 [; ;aqm.c: 171: serial_out(*w++);
 "171
 [e ( _serial_out (1 *U ++ _w * -> -> 1 `i `x -> -> # *U _w `i `x ]
 "172
 }
-[e :U 28 ]
+[e :U 21 ]
 "170
-[e $ != -> *U _w `i -> -> -> 0 `i `Cuc `i 29  ]
-[e :U 30 ]
+[e $ != -> *U _w `i -> -> -> 0 `i `Cuc `i 22  ]
+[e :U 23 ]
 [; ;aqm.c: 172: }
 [; ;aqm.c: 173: }
 "173
-[e :UE 27 ]
+[e :UE 20 ]
 }
 "14
 [v F518 `(v 1 tf ]
@@ -1409,7 +1383,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;aqm.c: 176: if(RCIF){
 "176
-[e $ ! _RCIF 32  ]
+[e $ ! _RCIF 25  ]
 {
 [; ;aqm.c: 177: RCIF=0;
 "177
@@ -1419,25 +1393,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _s * -> _p `ux -> -> # *U &U _s `ui `ux _RCREG ]
 [; ;aqm.c: 179: if(s[0]=='*'){p++;}
 "179
-[e $ ! == -> *U + &U _s * -> -> -> 0 `i `ui `ux -> -> # *U &U _s `ui `ux `ui -> 42 `ui 33  ]
+[e $ ! == -> *U + &U _s * -> -> -> 0 `i `ui `ux -> -> # *U &U _s `ui `ux `ui -> 42 `ui 26  ]
 {
 [e ++ _p -> -> 1 `i `uc ]
 }
-[e $U 34  ]
+[e $U 27  ]
 "180
-[e :U 33 ]
+[e :U 26 ]
 [; ;aqm.c: 180: else {p=0;}
 {
 [e = _p -> -> 0 `i `uc ]
 }
-[e :U 34 ]
+[e :U 27 ]
 "181
 }
-[e :U 32 ]
+[e :U 25 ]
 [; ;aqm.c: 181: }
 [; ;aqm.c: 182: }
 "182
-[e :UE 31 ]
+[e :UE 24 ]
 }
 "184
 [v _adc_conversion `(v 1 ef ]
@@ -1450,11 +1424,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ADCON0 -> -> 197 `i `uc ]
 [; ;aqm.c: 186: while(ADGO);
 "186
-[e $U 36  ]
-[e :U 37 ]
-[e :U 36 ]
-[e $ _ADGO 37  ]
-[e :U 38 ]
+[e $U 29  ]
+[e :U 30 ]
+[e :U 29 ]
+[e $ _ADGO 30  ]
+[e :U 31 ]
 [; ;aqm.c: 187: a=ADRESL;
 "187
 [e = _a -> _ADRESL `ui ]
@@ -1469,7 +1443,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _c + _b / _a -> -> 2 `i `ui ]
 [; ;aqm.c: 191: }
 "191
-[e :UE 35 ]
+[e :UE 28 ]
 }
 "193
 [v _hexa_val `(v 1 ef1`ui ]
@@ -1504,7 +1478,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _lcd_data (1 -> + _n -> -> 48 `i `ui `uc ]
 [; ;aqm.c: 202: }
 "202
-[e :UE 39 ]
+[e :UE 32 ]
 }
 "204
 [v _lcd_init `(v 1 ef ]
@@ -1526,7 +1500,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _command (1 -> -> 56 `i `uc ]
 [; ;aqm.c: 209: }
 "209
-[e :UE 40 ]
+[e :UE 33 ]
 }
 "211
 [v _command `(v 1 ef1`uc ]
@@ -1555,7 +1529,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 10 `i `d / .20e6 .4000.0 `ul ]
 [; ;aqm.c: 218: }
 "218
-[e :UE 41 ]
+[e :UE 34 ]
 }
 "220
 [v _lcd_data `(v 1 ef1`uc ]
@@ -1584,7 +1558,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 10 `i `d / .20e6 .4000.0 `ul ]
 [; ;aqm.c: 227: }
 "227
-[e :UE 42 ]
+[e :UE 35 ]
 }
 "229
 [v _lcd_display `(v 1 ef1`*Cuc ]
@@ -1595,8 +1569,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;aqm.c: 230: while(*word){
 "230
-[e $U 44  ]
-[e :U 45 ]
+[e $U 37  ]
+[e :U 38 ]
 {
 [; ;aqm.c: 231: lcd_data(*word++);
 "231
@@ -1606,39 +1580,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( __delay (1 -> * -> -> 1 `i `d / .20e6 .4000.0 `ul ]
 "233
 }
-[e :U 44 ]
+[e :U 37 ]
 "230
-[e $ != -> *U _word `i -> -> -> 0 `i `Cuc `i 45  ]
-[e :U 46 ]
+[e $ != -> *U _word `i -> -> -> 0 `i `Cuc `i 38  ]
+[e :U 39 ]
 [; ;aqm.c: 233: }
 [; ;aqm.c: 234: }
 "234
-[e :UE 43 ]
+[e :UE 36 ]
 }
-[a 21C 108 105 118 101 109 111 110 105 116 111 114 105 110 103 46 99 111 46 105 110 47 97 113 109 49 47 109 111 117 116 46 112 104 112 0 ]
+[a 15C 78 111 65 110 105 109 97 108 68 101 116 101 99 116 0 ]
+[a 14C 65 110 105 109 97 108 68 101 116 101 99 116 0 ]
+[a 21C 108 105 118 101 109 111 110 105 116 111 114 105 110 103 46 99 111 46 105 110 47 97 103 114 105 48 49 47 109 111 117 116 46 112 104 112 0 ]
 [a 6C 65 84 43 72 84 84 80 73 78 73 84 0 ]
 [a 2C 65 84 0 ]
 [a 3C 65 84 0 ]
 [a 8C 85 82 76 0 ]
 [a 20C 85 82 76 0 ]
+[a 11C 70 85 76 76 0 ]
 [a 27C 79 70 70 0 ]
 [a 17C 67 73 68 0 ]
 [a 23C 67 73 68 0 ]
 [a 25C 65 84 43 72 84 84 80 82 69 65 68 0 ]
-[a 9C 108 105 118 101 109 111 110 105 116 111 114 105 110 103 46 99 111 46 105 110 47 97 113 109 49 47 105 110 115 101 114 116 46 112 104 112 63 0 ]
 [a 4C 65 84 43 67 82 69 71 63 0 ]
-[a 12C 99 111 61 0 ]
-[a 14C 109 101 116 104 61 0 ]
-[a 13C 111 104 61 0 ]
-[a 15C 98 117 116 97 110 101 61 0 ]
+[a 10C 38 109 111 105 115 116 61 0 ]
+[a 9C 108 105 118 101 109 111 110 105 116 111 114 105 110 103 46 99 111 46 105 110 47 97 103 114 105 48 49 47 105 110 115 101 114 116 46 112 104 112 63 116 101 109 112 61 0 ]
+[a 13C 38 97 110 105 109 61 0 ]
 [a 7C 65 84 43 72 84 84 80 80 65 82 65 61 0 ]
 [a 16C 65 84 43 72 84 84 80 80 65 82 65 61 0 ]
 [a 19C 65 84 43 72 84 84 80 80 65 82 65 61 0 ]
 [a 22C 65 84 43 72 84 84 80 80 65 82 65 61 0 ]
-[a 11C 99 111 50 61 0 ]
-[a 10C 111 50 61 0 ]
-[a 1C 86 65 76 32 58 0 ]
+[a 1C 86 79 76 84 58 0 ]
 [a 5C 65 84 43 83 65 80 66 82 61 49 44 49 0 ]
 [a 18C 65 84 43 72 84 84 80 65 67 84 73 79 78 61 48 0 ]
 [a 24C 65 84 43 72 84 84 80 65 67 84 73 79 78 61 48 0 ]
+[a 12C 68 82 89 32 0 ]
 [a 26C 79 78 32 0 ]

@@ -42,7 +42,7 @@ void main(){
 	gsm_init();
 	lcd_init();
 	command(0x80);
-	lcd_display("VAL :");
+	lcd_display("VOLT:");
 	command(0x87);
 	//lcd_display("Deg");
 	while(1){
@@ -94,25 +94,25 @@ void gprs(){
 	serial_out(',');
 	serial_out('"');
 	//http://livemonitoring.info/sns01agri/insert.php?temp=45&moist=FULL&anim=Animal%20Detect
-	serial_display("livemonitoring.co.in/aqm1/insert.php?");
-	if(j >= 10 && j <= 20){
-		serial_display("o2=");
-	} else if(j >= 21 && j <= 30){
-		serial_display("co2=");
-	} else if(j >= 31 && j <= 40){
-		serial_display("co=");
-	} else if(j >= 41 && j <= 50){
-		serial_display("oh=");
-	} else if(j >= 51 && j <= 60){
-		serial_display("meth=");
-	} else if(j >= 61 && j <= 150){
-		serial_display("butane=");
+	serial_display("livemonitoring.co.in/agri01/insert.php?temp=");
+	serial_out(m+0x30);
+	serial_out(n+0x30);
+	serial_display("&moist=");
+	
+	if(moi==0){
+		serial_display("FULL");
+	}else{
+		serial_display("DRY ");
 	}
-		serial_out(d+0x30);
-		serial_out(k+0x30);
-		serial_out(m+0x30);
-		serial_out(n+0x30);
-		
+	
+	serial_display("&anim=");
+	
+	if(pir==1){
+		serial_display("AnimalDetect");
+	}else{
+		serial_display("NoAnimalDetect");
+	}
+	
 	serial_out('"');
 	serial_out(0x0d);
 	__delay_ms (2000);
@@ -137,7 +137,7 @@ void gprs1(){
 	serial_out('"');
 	serial_out(',');
 	serial_out('"');
-	serial_display("livemonitoring.co.in/aqm1/mout.php");
+	serial_display("livemonitoring.co.in/agri01/mout.php");
 	serial_out('"');
 	serial_out(0x0d);
 	serial_display("AT+HTTPPARA=");
@@ -184,10 +184,10 @@ void interrupt funct(void){
 void adc_conversion(){
 	ADCON0=0XC5;
 	while(ADGO);
-		a=ADRESL;
-		b=ADRESH;
-		b=b*256;
-		c=b+a/2;
+	a=ADRESL;
+	b=ADRESH;
+	b=b*256;
+	c=b+a/2;
 }
 
 void hexa_val(unsigned int val){
