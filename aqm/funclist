@@ -1,0 +1,17 @@
+_lcd_data: CODE, 1453 0 29
+_lcd_display: CODE, 1327 0 47
+_main: CODE, 994 0 118
+_gprs: CODE, 478 0 225
+___lwdiv: CODE, 1112 0 82
+_hexa_val: CODE, 703 0 157
+_serial_out: CODE, 1574 0 12
+_serial_init: CODE, 1536 0 21
+_gsm_init: CODE, 860 0 134
+___lwmod: CODE, 1194 0 70
+_gprs1: CODE, 249 0 229
+_adc_conversion: CODE, 1264 0 63
+_funct: CODE, 1374 0 42
+_serial_display: CODE, 1416 0 37
+_command: CODE, 1482 0 29
+_lcd_init: CODE, 1511 0 25
+Total: 1320

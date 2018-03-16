@@ -1,0 +1,14 @@
+Agri:
+AT+HTTPPARA="URL","livemonitoring.co.in/agri01/insert.php?temp=32&moist=DRY&anim=human"
+
+AT+HTTPPARA="CID",1
+
+AT+HTTPACTION=0
+
+AQM:
+
+AT+HTTPPARA="URL","livemonitoring.co.in/aqm1/insert.php?o2=2&co2=2&co=2&oh=2&meth=2&butane=2"
+
+AT+HTTPPARA="CID",1
+
+AT+HTTPACTION=0
